@@ -1,0 +1,324 @@
+.container {
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background-color: #1f2d3a;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ecf0f1;
+  letter-spacing: 0.5px;
+}
+
+.subtitulo {
+  font-size: 0.95rem;
+  color: #aab7b8;
+  margin: 0;
+}
+
+.filtroContainer {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(93, 173, 226, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.filtroTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filtroContent {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputGroup {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.inputGroup input {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(93, 173, 226, 0.3) !important;
+  color: #fff !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  font-size: 0.95rem !important;
+  transition: all 0.3s ease;
+}
+
+.inputGroup input:focus {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: #5dade2 !important;
+  box-shadow: 0 0 0 3px rgba(93, 173, 226, 0.1) !important;
+}
+
+.inputGroup input::placeholder {
+  color: #7a8297 !important;
+}
+
+.btnPesquisar {
+  color: #fff;
+  background: #5dade2 !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease;
+  cursor: pointer !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btnPesquisar:hover {
+  background: #3498db !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(93, 173, 226, 0.3);
+}
+
+/* DROPDOWN */
+.dropdownCustom {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownBotao {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(93, 173, 226, 0.3);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.dropdownBotao:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: #5dade2;
+}
+
+.dropdownBotao:active {
+  background-color: rgba(93, 173, 226, 0.15);
+  border-color: #5dade2;
+}
+
+.dropdownArrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdownMenuCustom {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  background-color: #273746;
+  border: 1px solid rgba(93, 173, 226, 0.3);
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItemCustom {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.dropdownItemCustom:hover {
+  background-color: rgba(93, 173, 226, 0.2);
+  color: #5dade2;
+  padding-left: 1.25rem;
+}
+
+.dropdownItemCustom:active {
+  background-color: rgba(93, 173, 226, 0.3);
+}
+
+/* TABELA */
+.tableContainer {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(93, 173, 226, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.table {
+  margin: 0;
+  color: #fff;
+}
+
+.table thead {
+  border-bottom: 2px solid rgba(93, 173, 226, 0.3);
+}
+
+.table thead th {
+  background: rgba(93, 173, 226, 0.1);
+  color: #ecf0f1;
+  font-weight: 600;
+  padding: 1rem;
+  border: none;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid rgba(93, 173, 226, 0.1);
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background: rgba(93, 173, 226, 0.08);
+}
+
+.table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  color: #2c2c2c;
+  border: none;
+}
+
+.acoesBotoes {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btnEditar {
+  background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%) !important;
+  border: none !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease;
+  font-size: 0.85rem !important;
+}
+
+.btnEditar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 152, 0, 0.3);
+}
+
+.btnExcluir {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease;
+  font-size: 0.85rem !important;
+}
+
+.btnExcluir:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+}
+
+.mensagemVazia {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #a0a8b5;
+  font-size: 1.1rem;
+}
+
+.iconeVazio {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 1.8rem;
+  }
+
+  .filtroContent {
+    flex-direction: column;
+  }
+
+  .inputGroup {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .table thead {
+    font-size: 0.75rem;
+  }
+
+  .table tbody td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .acoesBotoes {
+    flex-direction: column;
+  }
+
+  .btnEditar,
+  .btnExcluir {
+    width: 100%;
+  }
+}

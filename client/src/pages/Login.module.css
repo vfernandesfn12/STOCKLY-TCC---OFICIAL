@@ -1,0 +1,108 @@
+.pagelogin {
+  background-color: #1f2d3a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 2rem; */
+}
+
+/* DAQUI PARA BAIXO FOI TUDO ACRESCENTADO */
+
+/* Tornar a imagem responsiva e moderna */
+.pagelogin img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Ajustar o form para responsividade e centralização */
+.formlogin {
+  background-color: #273746;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  color: #ecf0f1;
+}
+
+/* Inputs com visual clean */
+form .form-control {
+  background-color: #1c2833;
+  color: #ecf0f1;
+  border: 1px solid #34495e;
+}
+
+form .form-control:focus {
+  background-color: #1c2833;
+  color: #ecf0f1;
+  border-color: #5dade2;
+  box-shadow: 0 0 0 0.2rem rgba(93, 173, 226, 0.25);
+}
+
+/* Floating labels */
+form .form-floating > label {
+  color: #aab7b8;
+}
+
+/* Botão com estilo flat */
+form .btn {
+  background-color: #5dade2;
+  border: none;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+form .btn:hover {
+  background-color: #3498db;
+}
+
+/* Alerta */
+.alert {
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Estilo das mensagens de erro */
+.error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  text-align: left;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .pagelogin img {
+    max-width: 300px;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    width: 100% !important;
+    padding: 1.5rem;
+  }
+
+}
+
+.tituloLogin {
+  color: #ecf0f1;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.link {
+  color: #4a90e2;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.link:hover {
+  color: #8ab6f9; /* tom mais claro de azul */
+}

@@ -1,0 +1,16 @@
+/* Estilização das páginas */
+.App {
+    background-color: #1f2d3a;
+    min-height: 100%;
+}
+
+
+/* Estilização das mensagens de erro */
+.error{
+    color: red;
+    font-size: 20px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
