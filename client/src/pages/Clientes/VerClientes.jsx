@@ -137,7 +137,7 @@ const VerClientes = () => {
 
         {/* FILTROS */}
         <div className={styles.filtroContainer}>
-          <p className={styles.filtroTitle}>🔍 Filtros:</p>
+          <p className={styles.filtroTitle}> Filtros:</p>
           <div className={styles.filtroContent}>
             <InputGroup className={styles.inputGroup}>
               <Form.Control
@@ -146,7 +146,7 @@ const VerClientes = () => {
                 onChange={(e) => setBuscaNome(e.target.value)}
                 className={styles.filtroInput}
               />
-              <Button className={styles.btnPesquisar} id="botao-filtrar">
+              <Button className={styles.btnPesquisar} id="botao-filtrar" style={{ marginLeft: "20px" }}>
                 <BsSearch /> Pesquisar
               </Button>
             </InputGroup>
@@ -198,7 +198,7 @@ const VerClientes = () => {
                       }}
                       type="button"
                     >
-                      🍎 Alimentos
+                       Alimentos
                     </button>
 
                     <button
@@ -209,7 +209,7 @@ const VerClientes = () => {
                       }}
                       type="button"
                     >
-                      🥤 Bebidas
+                       Bebidas
                     </button>
 
                     <button
@@ -220,7 +220,7 @@ const VerClientes = () => {
                       }}
                       type="button"
                     >
-                      ❄️ Congelados
+                       Congelados
                     </button>
 
                     <button
@@ -231,7 +231,7 @@ const VerClientes = () => {
                       }}
                       type="button"
                     >
-                      📦 Outros
+                       Outros
                     </button>
                   </div>
                 </Portal>
@@ -310,14 +310,14 @@ const VerClientes = () => {
                           size="sm"
                           className={styles.btnEditar}
                         >
-                          ✏️ Editar
+                           Editar
                         </Button>
                         <Button
                           size="sm"
                           className={styles.btnExcluir}
                           onClick={() => handleDelete(cli.id, cli.nome)}
                         >
-                          🗑️ Excluir
+                           Excluir
                         </Button>
                       </div>
                     </td>

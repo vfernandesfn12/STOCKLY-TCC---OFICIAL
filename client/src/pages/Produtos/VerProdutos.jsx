@@ -41,11 +41,12 @@ const VerProdutos = () => {
 
         {/* FILTRO: Busca por nome */}
         <div className={styles.filtroContainer}>
-          <p className={styles.filtroTitle}>🔍 Consulta por nome:</p>
+          <p className={styles.filtroTitle}> Consulta por nome:</p>
 
           <div className={styles.filtroContent}>
             <div className={styles.inputGroup}>
               <input
+                style={{width:"300px"}}
                 type="text"
                 placeholder="Digite o nome do produto"
                 value={buscaNome}

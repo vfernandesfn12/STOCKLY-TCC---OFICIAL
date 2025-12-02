@@ -99,7 +99,7 @@
 
 .linkTitle {
   font-weight: 600;
-  color: #aab7b8;
+  color: #303030;
 }
 
 .linkDesc {
@@ -167,15 +167,15 @@
 
 .alertRow {
   background: linear-gradient(90deg, rgba(255,210,183,0.08), rgba(255,200,200,0.03));
-  border-left: 4px solid rgba(255, 150, 40, 0.9);
+  border-left: 4px solid #ff9900;
 }
 
 .badgeWarning {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(255, 183, 77, 0.12);
-  color: #ff9d35;
+  background: rgba(255, 154, 23, 0.12);
+  color: #ff9900;
   padding: 0.35rem 0.6rem;
   border-radius: 999px;
   font-weight: 600;

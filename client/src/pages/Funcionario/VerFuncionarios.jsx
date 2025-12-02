@@ -121,7 +121,7 @@ const VerFuncionarios = () => {
 
         {/* FILTROS */}
         <div className={styles.filtroContainer}>
-          <p className={styles.filtroTitle}>🔍 Filtros</p>
+          <p className={styles.filtroTitle}> Filtros</p>
           <div className={styles.filtroContent}>
             <InputGroup className={styles.inputGroup}>
               <Form.Control
@@ -130,7 +130,7 @@ const VerFuncionarios = () => {
                 onChange={(e) => setBuscaNome(e.target.value)}
                 className={styles.filtroInput}
               />
-              <Button className={styles.btnPesquisar} id="botao-filtrar">
+              <Button className={styles.btnPesquisar} id="botao-filtrar" style={{ marginLeft: "20px" }}>
                 <BsSearch /> Pesquisar
               </Button>
             </InputGroup>
