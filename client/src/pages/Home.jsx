@@ -62,7 +62,6 @@ export default function Home() {
         <Row className="mb-4">
           <Col>
             <h1 className={styles.title}>Bem vindo ao Stockly!</h1>
-            <p className={styles.subtitle}>Painel para acesso rápido às principais áreas e informações.</p>
           </Col>
         </Row>
 
@@ -161,11 +160,6 @@ export default function Home() {
           </Col>
         </Row>
 
-        <Row className="mt-4">
-          <Col>
-            <div className={styles.footerNote}>Atalhos rápidos: clique em qualquer card para acessar.</div>
-          </Col>
-        </Row>
         {/* TABELA: Produtos perto de vencer (próximos 5 dias) - adicionado somente abaixo do conteúdo existente */}
         <Row className="mt-4">
           <Col>
