@@ -22,9 +22,6 @@ import CadastrarCliente from "./pages/Clientes/CadastrarCliente.jsx";
 import EditarCliente from "./pages/Clientes/EditarCliente.jsx";
 import VerClientes from "./pages/Clientes/VerClientes.jsx";
 
-// Importando Relatorios
-import Relatorios from "./pages/Relatorios/Relatorios.jsx";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,16 +31,6 @@ const router = createBrowserRouter([
       { index: true, element: <Login /> },
       { path: "login", element: <Login /> },
       { path: "cadastro", element: <Cadastro /> },
-    ],
-  },
-  // Rota para Relatorios
-  {
-    path: "/",
-    element: <RotasProtegidas />,
-    errorElement: <PaginaErro />,
-    children: [
-      { path: "home", element: <Home /> }, 
-      { path: "Relatorios", element: <Relatorios /> }
     ],
   },
   {

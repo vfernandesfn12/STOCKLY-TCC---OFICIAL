@@ -20,6 +20,10 @@
   font-weight: 600;
 }
 
+.subtitle {
+  margin: 0;
+  color: #aab7b8;
+}
 
 .statCard {
   background: #273746;
@@ -50,7 +54,7 @@
 
 .cardLabel {
   font-size: 0.9rem;
-  color: #000;
+  color: #aab7b8;
 }
 
 .cardValue {
@@ -61,7 +65,7 @@
 
 .linkCard {
   background: #273746;
-  color: #000;
+  color: #ecf0f1;
   border: none;
   border-radius: 10px;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -100,7 +104,12 @@
 
 .linkDesc {
   font-size: 0.85rem;
-  color: #000;
+  color: #aab7b8;
+}
+
+.footerNote {
+  color: #9aa9b5;
+  font-size: 0.9rem;
 }
 
 /* Seção de produtos próximos ao vencimento */

@@ -33,20 +33,20 @@ const VerProdutos = () => {
     <div className={styles.container}>
       <div className={styles.content}>
 
-        {/* HEADER IGUAL AO DE CLIENTES */}
+        {/* HEADER */}
         <div className={styles.header}>
           <h1 className={styles.titulo}>Estoque de Produtos</h1>
           <p className={styles.subtitulo}>Gerencie seus produtos cadastrados</p>
         </div>
 
-        {/* FILTRO: Busca por nome */}
+        {/* FILTRO */}
         <div className={styles.filtroContainer}>
           <p className={styles.filtroTitle}> Consulta por nome:</p>
 
           <div className={styles.filtroContent}>
             <div className={styles.inputGroup}>
               <input
-                style={{width:"300px"}}
+                style={{ width: "300px" }}
                 type="text"
                 placeholder="Digite o nome do produto"
                 value={buscaNome}
@@ -54,30 +54,26 @@ const VerProdutos = () => {
               />
             </div>
 
-            <button
-              className={styles.btnPesquisar}
-              onClick={() => {
-                // o filtro já é aplicado em produtosFiltrados por buscaNome;
-                // este botão serve para melhorar UX (poderia disparar validações futuramente)
-              }}
-            >
+            <button className={styles.btnPesquisar}>
               <BsSearch /> Pesquisar
             </button>
           </div>
         </div>
 
-        {/* TABELA IGUAL AO VERCLIENTES */}
+        {/* TABELA */}
         <div className={styles.tableContainer}>
           <table className={`table ${styles.table}`}>
             <thead>
               <tr>
-                <th>Nome</th>
-                <th>Código</th>
-                <th>Descrição</th>
-                <th>Entrada</th>
-                <th>Validade</th>
-                <th>Valor</th>
-                <th>Ações</th>
+                <th><strong>Nome</strong></th>
+                <th><strong>Código</strong></th>
+                <th><strong>Descrição</strong></th>
+                <th><strong>Quantidade</strong></th>        {/* NOVO */}
+                <th><strong>Fornecedor</strong></th>        {/* NOVO */}
+                <th><strong>Entrada</strong></th>
+                <th><strong>Validade</strong></th>
+                <th><strong>Valor</strong></th>
+                <th><strong>Ações</strong></th>
               </tr>
             </thead>
 
@@ -88,13 +84,14 @@ const VerProdutos = () => {
                     <td>{pro.nome}</td>
                     <td>{pro.codigo}</td>
                     <td>{pro.descricao}</td>
+                    <td>{pro.quantidade}</td>   {/* NOVO */}
+                    <td>{pro.fornecedor}</td>   {/* NOVO */}
                     <td>{pro.dataEntrada}</td>
                     <td>{pro.dataValidade}</td>
                     <td>{pro.valor}</td>
 
                     <td>
                       <div className={styles.acoesBotoes}>
-
                         <button className={styles.btnEditar}>
                           <Link
                             to={`/produtos/editar/${pro.id}`}
@@ -110,14 +107,13 @@ const VerProdutos = () => {
                         >
                           Excluir
                         </button>
-
                       </div>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7" className={styles.mensagemVazia}>
+                  <td colSpan="9" className={styles.mensagemVazia}>
                     Nenhum produto encontrado
                   </td>
                 </tr>

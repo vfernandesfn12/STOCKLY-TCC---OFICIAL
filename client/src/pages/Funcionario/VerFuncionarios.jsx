@@ -11,10 +11,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch, BsBox } from "react-icons/bs";
 
 // Importando o hook dos funcionários
-import {
-  useListaFuncionarios,
-  useDeletaFuncionario,
-} from "../../hooks/UseFuncionarios";
+import { useListaFuncionarios, useDeletaFuncionario } from "../../hooks/UseFuncionarios";
 
 // Importando o link para ir pra outra página
 import { Link } from "react-router-dom";
@@ -119,9 +116,7 @@ const VerFuncionarios = () => {
         {/* HEADER */}
         <div className={styles.header}>
           <h1 className={styles.titulo}>Funcionários Cadastrados</h1>
-          <p className={styles.subtitulo}>
-            Gerencie todos os seus funcionários cadastrados.
-          </p>
+          <p className={styles.subtitulo}>Gerencie todos os seus funcionários cadastrados.</p>
         </div>
 
         {/* FILTROS */}
@@ -135,11 +130,7 @@ const VerFuncionarios = () => {
                 onChange={(e) => setBuscaNome(e.target.value)}
                 className={styles.filtroInput}
               />
-              <Button
-                className={styles.btnPesquisar}
-                id="botao-filtrar"
-                style={{ marginLeft: "20px" }}
-              >
+              <Button className={styles.btnPesquisar} id="botao-filtrar" style={{ marginLeft: "20px" }}>
                 <BsSearch /> Pesquisar
               </Button>
             </InputGroup>
@@ -167,9 +158,7 @@ const VerFuncionarios = () => {
                   <tr key={func.id}>
                     <td>{func.id}</td>
                     <td>
-                      <span style={{ fontWeight: 500 }}>
-                        {func.nome_funcionario}
-                      </span>
+                      <span style={{ fontWeight: 500 }}>{func.nome_funcionario}</span>
                     </td>
                     <td>{func.email}</td>
                     <td>{func.cpf}</td>
@@ -184,16 +173,14 @@ const VerFuncionarios = () => {
                           size="sm"
                           className={styles.btnEditar}
                         >
-                          Editar
+                          ✏️ Editar
                         </Button>
                         <Button
                           size="sm"
                           className={styles.btnExcluir}
-                          onClick={() =>
-                            handleDelete(func.id, func.nome_funcionario)
-                          }
+                          onClick={() => handleDelete(func.id, func.nome_funcionario)}
                         >
-                          Excluir
+                          🗑️ Excluir
                         </Button>
                       </div>
                     </td>
@@ -207,9 +194,7 @@ const VerFuncionarios = () => {
                 <BsBox />
               </div>
               <p>Nenhum funcionário encontrado</p>
-              <small>
-                Tente ajustar seus filtros ou cadastre um novo funcionário
-              </small>
+              <small>Tente ajustar seus filtros ou cadastre um novo funcionário</small>
             </div>
           )}
         </div>
