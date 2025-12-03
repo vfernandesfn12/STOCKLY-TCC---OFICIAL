@@ -173,14 +173,14 @@ const VerFuncionarios = () => {
                           size="sm"
                           className={styles.btnEditar}
                         >
-                          ✏️ Editar
+                           Editar
                         </Button>
                         <Button
                           size="sm"
                           className={styles.btnExcluir}
                           onClick={() => handleDelete(func.id, func.nome_funcionario)}
                         >
-                          🗑️ Excluir
+                           Excluir
                         </Button>
                       </div>
                     </td>
