@@ -70,6 +70,7 @@ const VerProdutos = () => {
                 <th><strong>Descrição</strong></th>
                 <th><strong>Quantidade</strong></th>        {/* NOVO */}
                 <th><strong>Fornecedor</strong></th>        {/* NOVO */}
+                <th><strong>Tipo</strong></th>
                 <th><strong>Entrada</strong></th>
                 <th><strong>Validade</strong></th>
                 <th><strong>Valor</strong></th>
@@ -86,6 +87,7 @@ const VerProdutos = () => {
                     <td>{pro.descricao}</td>
                     <td>{pro.quantidade}</td>   {/* NOVO */}
                     <td>{pro.fornecedor}</td>   {/* NOVO */}
+                    <td>{pro.tipoProduto}</td>
                     <td>{pro.dataEntrada}</td>
                     <td>{pro.dataValidade}</td>
                     <td>{pro.valor}</td>

@@ -265,17 +265,6 @@
       "tipoProduto": "perecivel",
       "dataValidade": "2025-12-10",
       "valor": "8.40"
-    },
-    {
-      "id": "0887",
-      "nome": "Cuscuz do Lula",
-      "codigo": "CDL021",
-      "descricao": "Eu não vou roubar o povo mais.",
-      "quantidade": "13",
-      "fornecedor": "PT",
-      "dataEntrada": "2025-12-03",
-      "dataValidade": "2025-12-04",
-      "valor": "13.00"
     }
   ],
   "funcionarios": [
