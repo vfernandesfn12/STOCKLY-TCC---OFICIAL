@@ -1,3 +1,9 @@
+.tableContainer :global(.table),
+.tableContainer :global(.table > :not(caption) > * > *) {
+  background-color: rgba(255, 255, 255, 0.03)  !important;
+  color: white !important;
+}
+
 .container {
   padding: 2rem 1rem;
   min-height: 100vh;
