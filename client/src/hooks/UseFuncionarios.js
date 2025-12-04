@@ -1,5 +1,5 @@
 // url da API
-const url = "http://localhost:5000";
+const url = import.meta.env.VITE_API_URL;
 
 import { useState, useEffect } from "react";
 

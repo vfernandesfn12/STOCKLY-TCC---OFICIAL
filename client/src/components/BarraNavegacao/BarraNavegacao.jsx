@@ -14,9 +14,6 @@ import { useContext } from "react";
 
 // Importanto os icones
 import { BsBoxes } from "react-icons/bs";
-import { HiOutlineDocumentChartBar } from "react-icons/hi2";
-import { BiHomeAlt2 } from "react-icons/bi";
-import { LiaAtomSolid } from "react-icons/lia";
 import { HiUserGroup } from "react-icons/hi";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { HiMiniClipboardDocumentList } from "react-icons/hi2";

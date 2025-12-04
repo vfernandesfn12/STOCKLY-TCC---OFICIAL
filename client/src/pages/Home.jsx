@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { BsPeople, BsBoxSeam, BsPersonLinesFill, BsBuilding, BsExclamationTriangle } from "react-icons/bs";
 
 import { useListaClientes } from "./Clientes/../../hooks/useClientes";
-import { useListaProdutos } from "../hooks/UseProdutos";
+import { useListaProdutos } from "../hooks/UseProdutos.js";
 import styles from "./Home.module.css";
 
 export default function Home() {
