@@ -34,7 +34,7 @@
       "quantidade": 120,
       "fornecedor": "Grãos & Cia",
       "dataEntrada": "2025-11-20",
-      "tipoProduto": "nao perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2027-05-12",
       "valor": "27.90"
     },
@@ -46,7 +46,7 @@
       "quantidade": 200,
       "fornecedor": "Campo Verde Alimentos",
       "dataEntrada": "2025-11-17",
-      "tipoProduto": "nao perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2027-04-10",
       "valor": "9.20"
     },
@@ -58,7 +58,7 @@
       "quantidade": 150,
       "fornecedor": "Moinhos União",
       "dataEntrada": "2025-11-22",
-      "tipoProduto": "nao perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2026-12-01",
       "valor": "5.30"
     },
@@ -70,7 +70,7 @@
       "quantidade": 300,
       "fornecedor": "Açucareira Brasil",
       "dataEntrada": "2025-11-18",
-      "tipoProduto": "nao perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2028-02-20",
       "valor": "4.85"
     },
@@ -82,7 +82,7 @@
       "quantidade": 80,
       "fornecedor": "Café Bom Sabor",
       "dataEntrada": "2025-11-16",
-      "tipoProduto": "nao perecivel",
+      "tipoProduto": "Bebida",
       "dataValidade": "2027-01-18",
       "valor": "15.90"
     },
@@ -94,7 +94,7 @@
       "quantidade": 180,
       "fornecedor": "Oleosul Distribuidora",
       "dataEntrada": "2025-11-23",
-      "tipoProduto": "nao perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2026-10-03",
       "valor": "6.10"
     },
@@ -106,7 +106,7 @@
       "quantidade": 250,
       "fornecedor": "Sabor Real Alimentos",
       "dataEntrada": "2025-11-21",
-      "tipoProduto": "nao perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2026-09-15",
       "valor": "2.99"
     },
@@ -118,7 +118,7 @@
       "quantidade": 90,
       "fornecedor": "Laticínios Vigorvita",
       "dataEntrada": "2025-11-24",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Bebida",
       "dataValidade": "2026-01-14",
       "valor": "5.49"
     },
@@ -130,7 +130,7 @@
       "quantidade": 140,
       "fornecedor": "Laticínios Montela",
       "dataEntrada": "2025-11-26",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-08",
       "valor": "2.89"
     },
@@ -142,7 +142,7 @@
       "quantidade": 60,
       "fornecedor": "Laticínios Serra Bela",
       "dataEntrada": "2025-11-20",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-12",
       "valor": "13.99"
     },
@@ -154,7 +154,7 @@
       "quantidade": 70,
       "fornecedor": "Frios & Sabores",
       "dataEntrada": "2025-11-19",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-07",
       "valor": "9.89"
     },
@@ -166,7 +166,7 @@
       "quantidade": 110,
       "fornecedor": "Distribuidora FrangoSul",
       "dataEntrada": "2025-11-25",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Congelados",
       "dataValidade": "2026-05-20",
       "valor": "16.50"
     },
@@ -178,7 +178,7 @@
       "quantidade": 95,
       "fornecedor": "Carnes Premium",
       "dataEntrada": "2025-11-26",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-02",
       "valor": "18.90"
     },
@@ -190,7 +190,7 @@
       "quantidade": 85,
       "fornecedor": "Casa das Carnes União",
       "dataEntrada": "2025-11-23",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-20",
       "valor": "17.80"
     },
@@ -202,7 +202,7 @@
       "quantidade": 70,
       "fornecedor": "Peixaria do Norte",
       "dataEntrada": "2025-11-20",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Congelados",
       "dataValidade": "2026-04-01",
       "valor": "29.50"
     },
@@ -214,7 +214,7 @@
       "quantidade": 130,
       "fornecedor": "Hortifruti Brasil",
       "dataEntrada": "2025-11-22",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-01",
       "valor": "4.10"
     },
@@ -226,7 +226,7 @@
       "quantidade": 125,
       "fornecedor": "Hortifruti Brasil",
       "dataEntrada": "2025-11-22",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-05",
       "valor": "3.80"
     },
@@ -238,7 +238,7 @@
       "quantidade": 110,
       "fornecedor": "Hortifruti Carmem",
       "dataEntrada": "2025-11-21",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-11-30",
       "valor": "7.30"
     },
@@ -250,7 +250,7 @@
       "quantidade": 140,
       "fornecedor": "Distribuidora FrutaSul",
       "dataEntrada": "2025-11-23",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-03",
       "valor": "5.20"
     },
@@ -262,7 +262,7 @@
       "quantidade": 160,
       "fornecedor": "Pomareira Nacional",
       "dataEntrada": "2025-11-24",
-      "tipoProduto": "perecivel",
+      "tipoProduto": "Comida",
       "dataValidade": "2025-12-10",
       "valor": "8.40"
     }
