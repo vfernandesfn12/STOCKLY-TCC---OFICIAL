@@ -5,12 +5,18 @@ import styles from "./Grafico.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { mes: "Jan", Entrada: 186, Saída: 80 },
+  { mes: "Fev", Entrada: 305, Saída: 200 },
+  { mes: "Mar", Entrada: 237, Saída: 120 },
+  { mes: "Abr", Entrada: 73, Saída: 190 },
+  { mes: "Mai", Entrada: 209, Saída: 130 },
+  { mes: "Jun", Entrada: 214, Saída: 140 },
+  { mes: "Jul", Entrada: 214, Saída: 140 },
+  { mes: "Ago", Entrada: 214, Saída: 140 },
+  { mes: "Set", Entrada: 214, Saída: 140 },
+  { mes: "Out", Entrada: 214, Saída: 140 },
+  { mes: "Nov", Entrada: 214, Saída: 140 },
+  { mes: "Dez", Entrada: 214, Saída: 140 },
 ];
 
 export default function Grafico() {
@@ -28,11 +34,11 @@ export default function Grafico() {
 
         <BarChart width={700} height={350} data={chartData}>
           <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="month" />
+          <XAxis dataKey="mes" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="desktop" fill="#8884d8" />
-          <Bar dataKey="mobile" fill="#82ca9d" />
+          <Bar dataKey="Entrada" fill="green" />
+          <Bar dataKey="Saída" fill="red" />
         </BarChart>
       </Container>
     </div>
