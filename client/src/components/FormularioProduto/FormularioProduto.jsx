@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useEffect } from "react";
 
 
 // Importando a função useform do pacote hook-form
@@ -14,9 +15,9 @@ import { useInserirProduto } from "../../hooks/UseProdutos";
 
 const FormularioProduto = (props) => {
 
-//IMPORTAÇÂO DAS FUNÇÕES DO HOOK USEPRODUTOS
-//usando a função de inserir produto
-const { inserirProduto } = useInserirProduto();
+  //IMPORTAÇÂO DAS FUNÇÕES DO HOOK USEPRODUTOS
+  //usando a função de inserir produto
+  const { inserirProduto } = useInserirProduto();
 
   // register = cria um objeto com os valores retirados dos inputs
   // handleSumbit = envia os dados formulário, caso dê erro ou sucesso
@@ -25,9 +26,14 @@ const { inserirProduto } = useInserirProduto();
     register,
     handleSubmit,
     formState: { errors },
-    watch,
     reset
   } = useForm();
+
+  useEffect(() => {
+    if (props.page === "editar" && props.produto) {
+      reset(props.produto);
+    }
+  }, [props.produto]);
 
   // FUNÇÕES QUE LIDAM COM O SUCESSO OU ERRO DO FORMUÁRIO
   // Função para caso dê certo na validação do formulário
@@ -52,7 +58,7 @@ const { inserirProduto } = useInserirProduto();
   return (
     <div className="text-center">
       <Form className="mt-3 w-full" onSubmit={handleSubmit(onSubmit, onError)}
-      style={{maxWidth:"720px", marginLeft:"200px"}}>
+        style={{ maxWidth: "720px", marginLeft: "200px" }}>
         <Form.Label as="h1" className="text-center mb-5 text-white">
           {" "}
           Cadastrar Produto{" "}
@@ -138,34 +144,34 @@ const { inserirProduto } = useInserirProduto();
           </Col>
         </Row>
 
-              {/* CAMPOS NOVOS: QUANTIDADE E FORNECEDOR */}
-      <Row className="mb-3">
-        <Col md={6}>
-          <FloatingLabel label="Quantidade">
-            <Form.Control
-              type="number"
-              {...register("quantidade", {
-                required: "A quantidade é obrigatória",
-                min: { value: 1, message: "Mínimo 1 unidade" },
-              })}
-            />
-            {errors.quantidade && <p className="error">{errors.quantidade.message}</p>}
-          </FloatingLabel>
-        </Col>
+        {/* CAMPOS NOVOS: QUANTIDADE E FORNECEDOR */}
+        <Row className="mb-3">
+          <Col md={6}>
+            <FloatingLabel label="Quantidade">
+              <Form.Control
+                type="number"
+                {...register("quantidade", {
+                  required: "A quantidade é obrigatória",
+                  min: { value: 1, message: "Mínimo 1 unidade" },
+                })}
+              />
+              {errors.quantidade && <p className="error">{errors.quantidade.message}</p>}
+            </FloatingLabel>
+          </Col>
 
-        <Col md={6}>
-          <FloatingLabel label="Fornecedor">
-            <Form.Control
-              type="text"
-              {...register("fornecedor", {
-                required: "O fornecedor é obrigatório",
-                minLength: { value: 2, message: "Nome muito curto" },
-              })}
-            />
-            {errors.fornecedor && <p className="error">{errors.fornecedor.message}</p>}
-          </FloatingLabel>
-        </Col>
-      </Row>
+          <Col md={6}>
+            <FloatingLabel label="Fornecedor">
+              <Form.Control
+                type="text"
+                {...register("fornecedor", {
+                  required: "O fornecedor é obrigatório",
+                  minLength: { value: 2, message: "Nome muito curto" },
+                })}
+              />
+              {errors.fornecedor && <p className="error">{errors.fornecedor.message}</p>}
+            </FloatingLabel>
+          </Col>
+        </Row>
 
 
         {/* Data Entrada e Tipo do produto */}
