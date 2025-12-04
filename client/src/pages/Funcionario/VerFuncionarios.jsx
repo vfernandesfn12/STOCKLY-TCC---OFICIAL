@@ -143,14 +143,14 @@ const VerFuncionarios = () => {
             <Table hover className={styles.table}>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>CPF</th>
-                  <th>Telefone</th>
-                  <th>Departamento</th>
-                  <th>Cargo</th>
-                  <th>Ações</th>
+                  <th><strong>ID</strong></th>
+                  <th><strong>Nome</strong></th>
+                  <th><strong>Email</strong></th>
+                  <th><strong>CPF</strong></th>
+                  <th><strong>Telefone</strong></th>
+                  <th><strong>Departamento</strong></th>
+                  <th><strong>Cargo</strong></th>
+                  <th><strong>Ações</strong></th>
                 </tr>
               </thead>
               <tbody>
@@ -173,14 +173,14 @@ const VerFuncionarios = () => {
                           size="sm"
                           className={styles.btnEditar}
                         >
-                          ✏️ Editar
+                           Editar
                         </Button>
                         <Button
                           size="sm"
                           className={styles.btnExcluir}
                           onClick={() => handleDelete(func.id, func.nome_funcionario)}
                         >
-                          🗑️ Excluir
+                           Excluir
                         </Button>
                       </div>
                     </td>
