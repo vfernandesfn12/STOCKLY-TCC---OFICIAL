@@ -11,12 +11,12 @@ const chartData = [
   { mes: "Abr", Entrada: 73, Saída: 190 },
   { mes: "Mai", Entrada: 209, Saída: 130 },
   { mes: "Jun", Entrada: 214, Saída: 140 },
-  { mes: "Jul", Entrada: 214, Saída: 140 },
-  { mes: "Ago", Entrada: 214, Saída: 140 },
-  { mes: "Set", Entrada: 214, Saída: 140 },
-  { mes: "Out", Entrada: 214, Saída: 140 },
-  { mes: "Nov", Entrada: 214, Saída: 140 },
-  { mes: "Dez", Entrada: 214, Saída: 140 },
+  { mes: "Jul", Entrada: 240, Saída: 90 },
+  { mes: "Ago", Entrada: 224, Saída: 500 },
+  { mes: "Set", Entrada: 180, Saída: 200 },
+  { mes: "Out", Entrada: 300, Saída: 80 },
+  { mes: "Nov", Entrada: 210, Saída: 150 },
+  { mes: "Dez", Entrada: 310, Saída: 100 },
 ];
 
 export default function Grafico() {
