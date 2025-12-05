@@ -1,11 +1,4 @@
-import {
-  BarChart,
-  Bar,
-  CartesianGrid,
-  XAxis,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { BarChart, Bar, CartesianGrid, XAxis, Tooltip, Legend } from "recharts";
 
 import styles from "./Grafico.module.css";
 
@@ -61,20 +54,11 @@ export default function Grafico() {
   }
 
   return (
-    <div
-      className={styles.pages}
-      style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-    >
+    <div className={styles.pages}>
       <Container className={styles.container}>
-        <Row>
-          <Col>
-            <h1 className={styles.Title}>Dashboard</h1>
-          </Col>
-        </Row>
-
         {/* BOTÕES DE FILTRO */}
         <Row className="mb-3">
-          <Col style={{ display: "flex", gap: "10px" }}>
+          <Col className={styles.Filtros}>
             <Button
               variant={filtro === "semanal" ? "primary" : "outline-primary"}
               onClick={() => aplicarFiltro("semanal")}
@@ -106,14 +90,16 @@ export default function Grafico() {
         </Row>
 
         {/* GRÁFICO */}
-        <BarChart width={700} height={350} data={dadosFiltrados}>
-          <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="mes" />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="Entrada" fill="green" />
-          <Bar dataKey="Saída" fill="red" />
-        </BarChart>
+        <div className={styles.GraficoBox}>
+          <BarChart width={700} height={350} data={dadosFiltrados}>
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="mes" />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="Entrada" fill="green" />
+            <Bar dataKey="Saída" fill="red" />
+          </BarChart>
+        </div>
       </Container>
     </div>
   );

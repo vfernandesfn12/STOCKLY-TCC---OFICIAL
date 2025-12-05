@@ -1,7 +1,35 @@
-.Title{
-    color: #fff;
+.Container {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.GraficoWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px; /* diminui o espaço depois do gráfico */
+}
+
+
+/* Centraliza a tabela */
+.TabelaWrapper {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Title {
+  font-size: 2.25rem;
+  margin: 0 0 0.25rem 0;
+  padding: 50px;
+  color: #ecf0f1;
+  font-weight: 600;
 }
 
 .SubTitle {
-    color: #fff;
+  margin: 0;
+  color: #fff;
+  text-align: center;
 }
