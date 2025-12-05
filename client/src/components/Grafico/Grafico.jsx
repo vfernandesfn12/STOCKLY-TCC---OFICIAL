@@ -1,9 +1,18 @@
-import { BarChart, Bar, CartesianGrid, XAxis, Tooltip, Legend } from "recharts";
+import {
+  BarChart,
+  Bar,
+  CartesianGrid,
+  XAxis,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 import styles from "./Grafico.module.css";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useState } from "react";
 
+// DADOS ORIGINAIS
 const chartData = [
   { mes: "Jan", Entrada: 186, Saída: 80 },
   { mes: "Fev", Entrada: 305, Saída: 200 },
@@ -20,6 +29,37 @@ const chartData = [
 ];
 
 export default function Grafico() {
+  const [filtro, setFiltro] = useState("anual");
+  const [dadosFiltrados, setDadosFiltrados] = useState(chartData);
+
+  // FUNÇÃO PARA APLICAR O FILTRO
+  function aplicarFiltro(tipo) {
+    setFiltro(tipo);
+
+    switch (tipo) {
+      case "semanal":
+        // 7 últimos dias (fake por enquanto — usa os últimos 2 meses)
+        setDadosFiltrados(chartData.slice(-2));
+        break;
+
+      case "trimestral":
+        // últimos 3 meses
+        setDadosFiltrados(chartData.slice(-3));
+        break;
+
+      case "semestral":
+        // últimos 6 meses
+        setDadosFiltrados(chartData.slice(-6));
+        break;
+
+      case "anual":
+      default:
+        // Todos os 12 meses
+        setDadosFiltrados(chartData);
+        break;
+    }
+  }
+
   return (
     <div
       className={styles.pages}
@@ -32,7 +72,41 @@ export default function Grafico() {
           </Col>
         </Row>
 
-        <BarChart width={700} height={350} data={chartData}>
+        {/* BOTÕES DE FILTRO */}
+        <Row className="mb-3">
+          <Col style={{ display: "flex", gap: "10px" }}>
+            <Button
+              variant={filtro === "semanal" ? "primary" : "outline-primary"}
+              onClick={() => aplicarFiltro("semanal")}
+            >
+              Semanal
+            </Button>
+
+            <Button
+              variant={filtro === "trimestral" ? "primary" : "outline-primary"}
+              onClick={() => aplicarFiltro("trimestral")}
+            >
+              Trimestral
+            </Button>
+
+            <Button
+              variant={filtro === "semestral" ? "primary" : "outline-primary"}
+              onClick={() => aplicarFiltro("semestral")}
+            >
+              Semestral
+            </Button>
+
+            <Button
+              variant={filtro === "anual" ? "primary" : "outline-primary"}
+              onClick={() => aplicarFiltro("anual")}
+            >
+              Anual
+            </Button>
+          </Col>
+        </Row>
+
+        {/* GRÁFICO */}
+        <BarChart width={700} height={350} data={dadosFiltrados}>
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="mes" />
           <Tooltip />
