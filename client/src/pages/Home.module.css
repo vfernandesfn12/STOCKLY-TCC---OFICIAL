@@ -3,8 +3,8 @@
   background-color: #1f2d3a;
   padding: 2.5rem 1rem;
   color: #ecf0f1;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
 
@@ -30,7 +30,7 @@
   border: 1px solid rgba(93, 173, 226, 0.08);
   color: #ecf0f1;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .cardInner {
@@ -74,7 +74,7 @@
 
 .linkCard:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
   text-decoration: none;
 }
 
@@ -161,7 +161,11 @@
 }
 
 .alertRow {
-  background: linear-gradient(90deg, rgba(255,210,183,0.08), rgba(255,200,200,0.03));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 210, 183, 0.08),
+    rgba(255, 200, 200, 0.03)
+  );
   border-left: 4px solid #ff9900;
 }
 
@@ -185,8 +189,28 @@
   color: #a0a8b5;
 }
 
+.Atalhos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Atalhos h4 {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
-  .cardIcon { width: 48px; height: 48px; font-size: 1.2rem }
-  .cardValue { font-size: 1.25rem }
-  .title { font-size: 1.6rem }
+  .cardIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+  .cardValue {
+    font-size: 1.25rem;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
 }

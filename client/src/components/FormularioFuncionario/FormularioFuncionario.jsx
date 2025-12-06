@@ -176,7 +176,6 @@ const FormularioFuncionario = (props) => {
                 <Form.Control
                   type="url"
                   {...register("fotoUrl", {
-                    required: "O link da foto é obrigatório",
                     pattern: {
                       value: /^(http|https):\/\/[^ "]+$/,
                       message: "Insira um link válido",

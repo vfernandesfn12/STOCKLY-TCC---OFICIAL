@@ -1,17 +1,39 @@
+/* Faz o body ocupar sempre todo o espaço da viewport */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* Estilização das páginas */
 .App {
     background-color: #1f2d3a;
-    min-height: 100%;
+    min-height: 100vh;   /* Garante altura mínima da tela inteira */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
-
 
 /* Estilização das mensagens de erro */
-.error{
+.error {
     color: red;
-    font-size: 20px;
-    position: absolute;
+    font-size: clamp(14px, 2vw, 20px); /* Responsivo: adapta tamanho da fonte */
+    position: relative; /* evita problemas em telas menores */
     text-align: center;
     width: 100%;
+    padding: 0.5rem 1rem; /* evita que o texto encoste nas bordas */
+    word-wrap: break-word; /* impede quebra estranha de layout */
 }
 
+/* Suaviza fonte em todas as telas */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
+/* Responsividade extrema para telas muito pequenas */
+@media (max-width: 400px) {
+    .error {
+        font-size: 14px; 
+    }
+}

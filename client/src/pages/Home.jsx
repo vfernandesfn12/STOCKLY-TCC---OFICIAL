@@ -4,7 +4,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { BsPeople, BsBoxSeam, BsPersonLinesFill, BsBuilding, BsExclamationTriangle } from "react-icons/bs";
+import {
+  BsPeople,
+  BsBoxSeam,
+  BsPersonLinesFill,
+  BsBuilding,
+  BsExclamationTriangle,
+} from "react-icons/bs";
 
 import { useListaClientes } from "./Clientes/../../hooks/useClientes";
 import { useListaProdutos } from "../hooks/UseProdutos.js";
@@ -43,7 +49,11 @@ export default function Home() {
     const target = new Date(dataStr + "T00:00:00");
     const hoje = new Date();
     // ignorar horário (trabalhar só com datas)
-    const hojeSemHora = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+    const hojeSemHora = new Date(
+      hoje.getFullYear(),
+      hoje.getMonth(),
+      hoje.getDate()
+    );
     const diffMs = target.getTime() - hojeSemHora.getTime();
     return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
   };
@@ -62,7 +72,9 @@ export default function Home() {
         <Row className="mb-4">
           <Col>
             <h1 className={styles.title}>Bem vindo ao Stockly!</h1>
-            <p className={styles.subtitle}>Painel para acesso rápido às principais áreas e informações.</p>
+            <p className={styles.subtitle}>
+              Painel para acesso rápido às principais áreas e informações.
+            </p>
           </Col>
         </Row>
 
@@ -71,7 +83,9 @@ export default function Home() {
             <Card className={styles.statCard}>
               <Card.Body>
                 <div className={styles.cardInner}>
-                  <div className={styles.cardIcon}><BsPeople /></div>
+                  <div className={styles.cardIcon}>
+                    <BsPeople />
+                  </div>
                   <div>
                     <div className={styles.cardLabel}>Fornecedores</div>
                     <div className={styles.cardValue}>{clientes.length}</div>
@@ -85,7 +99,9 @@ export default function Home() {
             <Card className={styles.statCard}>
               <Card.Body>
                 <div className={styles.cardInner}>
-                  <div className={styles.cardIcon}><BsBoxSeam /></div>
+                  <div className={styles.cardIcon}>
+                    <BsBoxSeam />
+                  </div>
                   <div>
                     <div className={styles.cardLabel}>Produtos</div>
                     <div className={styles.cardValue}>{produtosCount}</div>
@@ -99,7 +115,9 @@ export default function Home() {
             <Card className={styles.statCard}>
               <Card.Body>
                 <div className={styles.cardInner}>
-                  <div className={styles.cardIcon}><BsPersonLinesFill /></div>
+                  <div className={styles.cardIcon}>
+                    <BsPersonLinesFill />
+                  </div>
                   <div>
                     <div className={styles.cardLabel}>Funcionários</div>
                     <div className={styles.cardValue}>{funcionariosCount}</div>
@@ -110,24 +128,15 @@ export default function Home() {
           </Col>
         </Row>
 
-        <Row className="g-3">
+        <Row className={styles.Atalhos}>
           <h4>Atalhos:</h4>
-          <Col md={3} sm={6}>
-            <Card className={styles.linkCard} as={Link} to="/clientes">
-              <Card.Body className={styles.linkBody}>
-                <div className={styles.linkIcon}><BsPeople /></div>
-                <div>
-                  <div className={styles.linkTitle}>Fornecedores</div>
-                  <div className={styles.linkDesc}>Listar e gerenciar fornecedores</div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
 
           <Col md={3} sm={6}>
             <Card className={styles.linkCard} as={Link} to="/produtos">
               <Card.Body className={styles.linkBody}>
-                <div className={styles.linkIcon}><BsBoxSeam /></div>
+                <div className={styles.linkIcon}>
+                  <BsBoxSeam />
+                </div>
                 <div>
                   <div className={styles.linkTitle}>Produtos</div>
                   <div className={styles.linkDesc}>Controle de estoque</div>
@@ -139,7 +148,9 @@ export default function Home() {
           <Col md={3} sm={6}>
             <Card className={styles.linkCard} as={Link} to="/relatorios">
               <Card.Body className={styles.linkBody}>
-                <div className={styles.linkIcon}><BsBuilding /></div>
+                <div className={styles.linkIcon}>
+                  <BsBuilding />
+                </div>
                 <div>
                   <div className={styles.linkTitle}>Relatórios</div>
                   <div className={styles.linkDesc}>Seus relatórios</div>
@@ -151,7 +162,9 @@ export default function Home() {
           <Col md={3} sm={6}>
             <Card className={styles.linkCard} as={Link} to="/funcionarios">
               <Card.Body className={styles.linkBody}>
-                <div className={styles.linkIcon}><BsPersonLinesFill /></div>
+                <div className={styles.linkIcon}>
+                  <BsPersonLinesFill />
+                </div>
                 <div>
                   <div className={styles.linkTitle}>Funcionários</div>
                   <div className={styles.linkDesc}>Equipe e cargos</div>
@@ -165,8 +178,12 @@ export default function Home() {
         <Row className="mt-4">
           <Col>
             <div className={styles.sectionHeader}>
-              <h4 className={styles.sectionTitle}>Produtos próximo do vencimento</h4>
-              <p className={styles.sectionSub}>Produtos com validade nos próximos 5 dias</p>
+              <h4 className={styles.sectionTitle}>
+                Produtos próximo do vencimento
+              </h4>
+              <p className={styles.sectionSub}>
+                Produtos com validade nos próximos 5 dias
+              </p>
             </div>
 
             <div className={styles.tableContainer}>
@@ -188,17 +205,26 @@ export default function Home() {
                       const alerta = dias !== null && dias <= 5;
 
                       return (
-                        <tr key={p.id} className={alerta ? styles.alertRow : ""}>
+                        <tr
+                          key={p.id}
+                          className={alerta ? styles.alertRow : ""}
+                        >
                           <td>{p.nome}</td>
                           <td>{p.codigo}</td>
                           <td>{p.dataValidade}</td>
                           <td>
                             {alerta ? (
-                              <span className={styles.badgeWarning} title="Prazo de validade próximo">
-                                <BsExclamationTriangle /> {dias} dia{dias !== 1 ? "s" : ""}
+                              <span
+                                className={styles.badgeWarning}
+                                title="Prazo de validade próximo"
+                              >
+                                <BsExclamationTriangle /> {dias} dia
+                                {dias !== 1 ? "s" : ""}
                               </span>
                             ) : (
-                              <span>{dias} dia{dias !== 1 ? "s" : ""}</span>
+                              <span>
+                                {dias} dia{dias !== 1 ? "s" : ""}
+                              </span>
                             )}
                           </td>
                           <td>{p.valor}</td>
@@ -208,7 +234,9 @@ export default function Home() {
                     })
                   ) : (
                     <tr>
-                      <td colSpan="5" className={styles.mensagemVazia}>Nenhum produto com validade próxima</td>
+                      <td colSpan="5" className={styles.mensagemVazia}>
+                        Nenhum produto com validade próxima
+                      </td>
                     </tr>
                   )}
                 </tbody>
