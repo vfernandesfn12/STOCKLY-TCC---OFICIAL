@@ -23,12 +23,11 @@ const Relatorios = () => {
           <Grafico />
         </div>
 
+        <h4 className={styles.Title}>Histórico de Movimentações</h4>
+        <p className={styles.SubTitle}>Entrada e Saída de produtos</p>
         {/* TABELA DE MOVIMENTAÇÕES */}
         <Row className={styles.TabelaWrapper}>
           <Col>
-            <h4 className={styles.Title}>Histórico de Movimentações</h4>
-            <p className={styles.SubTitle}>Entradas e saídas de produtos</p>
-
             <table className="table table-striped text-center">
               <thead>
                 <tr>

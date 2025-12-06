@@ -27,18 +27,6 @@
   ],
   "produtos": [
     {
-      "id": "2001",
-      "nome": "Arroz Parboilizado",
-      "codigo": "ARZ010",
-      "descricao": "Arroz parboilizado tipo 1, pacote 5kg",
-      "quantidade": 120,
-      "fornecedor": "Grãos & Cia",
-      "dataEntrada": "2025-11-20",
-      "tipoProduto": "Comida",
-      "dataValidade": "2027-05-12",
-      "valor": "27.90"
-    },
-    {
       "id": "2002",
       "nome": "Feijão Preto",
       "codigo": "FEJ011",
