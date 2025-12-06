@@ -100,7 +100,11 @@ const FormularioFuncionario = (props) => {
             </FloatingLabel>
 
             {/* Telefone */}
-            <FloatingLabel controlId="FI-TELEFONE" label="Telefone" className="mb-5">
+            <FloatingLabel
+              controlId="FI-TELEFONE"
+              label="Telefone"
+              className="mb-5"
+            >
               <Form.Control
                 type="text"
                 {...register("telefone", {
@@ -111,7 +115,9 @@ const FormularioFuncionario = (props) => {
                   },
                 })}
               />
-              {errors.telefone && <p className="error">{errors.telefone.message}</p>}
+              {errors.telefone && (
+                <p className="error">{errors.telefone.message}</p>
+              )}
             </FloatingLabel>
 
             {/* Email */}
@@ -130,10 +136,15 @@ const FormularioFuncionario = (props) => {
             </FloatingLabel>
 
             {/* Departamento */}
-            <FloatingLabel controlId="FI-DEPARTAMENTO" label="Departamento" className="mb-5">
+            <FloatingLabel
+              controlId="FI-DEPARTAMENTO"
+              label="Departamento"
+              className="mb-5"
+            >
               <Form.Select
                 {...register("departamento", {
-                  validate: (value) => value !== "0" || "Escolha um departamento",
+                  validate: (value) =>
+                    value !== "0" || "Escolha um departamento",
                 })}
               >
                 <option value="0">Escolha um departamento</option>
@@ -151,7 +162,7 @@ const FormularioFuncionario = (props) => {
 
           {/* CARGO */}
           <Col md={12} lg={6}>
-          <FloatingLabel controlId="FI-CARGO" label="Cargo" className="mb-5">
+            <FloatingLabel controlId="FI-CARGO" label="Cargo" className="mb-5">
               <Form.Control
                 type="text"
                 {...register("cargo", {
@@ -172,7 +183,11 @@ const FormularioFuncionario = (props) => {
             </FloatingLabel>
             {/* Foto do Funcionário */}
             <Form.Group controlId="FI-FOTO" className="mb-5">
-              <FloatingLabel controlId="FI-FOTO-LINK" label="Link da foto" className="mb-5">
+              <FloatingLabel
+                controlId="FI-FOTO-LINK"
+                label="Link da foto"
+                className="mb-5"
+              >
                 <Form.Control
                   type="url"
                   {...register("fotoUrl", {
@@ -182,7 +197,9 @@ const FormularioFuncionario = (props) => {
                     },
                   })}
                 />
-                {errors.fotoUrl && <p className="error">{errors.fotoUrl.message}</p>}
+                {errors.fotoUrl && (
+                  <p className="error">{errors.fotoUrl.message}</p>
+                )}
               </FloatingLabel>
               <Image
                 width={200}
@@ -195,14 +212,11 @@ const FormularioFuncionario = (props) => {
         </Row>
 
         {/* Botão */}
-        <Button
-          variant="primary"
-          size="lg"
-          type="submit"
-        >
+        <Button variant="primary" size="lg" type="submit">
           {props.page === "editar" ? "Atualizar" : "Cadastrar"}
         </Button>
       </Form>
+
     </div>
   );
 };

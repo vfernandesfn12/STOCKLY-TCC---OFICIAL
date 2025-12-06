@@ -187,7 +187,7 @@ export default function Home() {
             </div>
 
             <div className={styles.tableContainer}>
-              <table className={`table ${styles.table}`}>
+              <table className={styles.table}>
                 <thead>
                   <tr>
                     <th>Nome</th>
