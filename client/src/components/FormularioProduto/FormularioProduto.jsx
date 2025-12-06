@@ -1,4 +1,5 @@
 // Importação dos componentes do bootstrap
+import { useNavigate } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,13 +12,16 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 // Importando o hook de produtos
-import { useInserirProduto } from "../../hooks/UseProdutos";
+import { useInserirProduto, useAtualizarProduto } from "../../hooks/UseProdutos";
+
 
 const FormularioProduto = (props) => {
+  const navigate = useNavigate();
 
   //IMPORTAÇÂO DAS FUNÇÕES DO HOOK USEPRODUTOS
   //usando a função de inserir produto
   const { inserirProduto } = useInserirProduto();
+  const { atualizarProduto } = useAtualizarProduto();
 
   // register = cria um objeto com os valores retirados dos inputs
   // handleSumbit = envia os dados formulário, caso dê erro ou sucesso
@@ -31,7 +35,17 @@ const FormularioProduto = (props) => {
 
   useEffect(() => {
     if (props.page === "editar" && props.produto) {
-      reset(props.produto);
+      reset({
+        nome: props.produto.nome || "",
+        codigo: props.produto.codigo || "",
+        descricao: props.produto.descricao || "",
+        quantidade: props.produto.quantidade || "",
+        fornecedor: props.produto.fornecedor || "",
+        tipoProduto: props.produto.tipoProduto || "",
+        dataEntrada: props.produto.dataEntrada || "",
+        dataValidade: props.produto.dataValidade || "",
+        valor: props.produto.valor || "",
+      });
     }
   }, [props.produto]);
 
@@ -40,13 +54,14 @@ const FormularioProduto = (props) => {
   // datat é o objeto com os dados do formulário
 
   const onSubmit = async (data) => {
-    console.log("Dados:", data);
     if (props.page === "cadastro") {
-      //Envia o objeto data para o hook inserir produto
-      inserirProduto(data);
+      await inserirProduto(data);
       alert("Produto cadastrado com sucesso!");
-    } else {
-      // Depois nòis ve
+      navigate("/produtos");  // 🔥 redireciona após cadastrar
+    } else if (props.page === "editar") {
+      await atualizarProduto(data, props.produto.id);
+      alert("Produto atualizado com sucesso!");
+      navigate("/produtos");  // já estava funcionando
     }
   };
 
@@ -60,8 +75,7 @@ const FormularioProduto = (props) => {
       <Form className="mt-3 w-full" onSubmit={handleSubmit(onSubmit, onError)}
         style={{ maxWidth: "720px", marginLeft: "200px" }}>
         <Form.Label as="h1" className="text-center mb-5 text-white">
-          {" "}
-          Cadastrar Produto{" "}
+          {props.page === "editar" ? "Editar Produto" : "Cadastrar Produto"}
         </Form.Label>
         <Row>
           <Col md={12} lg={12}>
@@ -184,9 +198,7 @@ const FormularioProduto = (props) => {
                   required: "A data de entrada é obrigatória",
                 })}
               />
-              {errors.dataEntrega && (
-                <p className="error"> {errors.dataEntrega.message} </p>
-              )}
+              {errors.dataEntrada && <p>{errors.dataEntrada.message}</p>}
             </FloatingLabel>
           </Col>
           <Col md={6}>
@@ -262,6 +274,7 @@ const FormularioProduto = (props) => {
             onClick={() => {
               // Função para limpar o formulário
               reset(); // função do useForm para limpar
+
             }}
           >
             Limpar

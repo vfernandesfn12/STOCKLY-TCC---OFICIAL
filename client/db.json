@@ -27,16 +27,16 @@
   ],
   "produtos": [
     {
-      "id": "2002",
-      "nome": "Feijão Preto",
+      "nome": "Feijãoasd",
       "codigo": "FEJ011",
       "descricao": "Feijão preto tipo 1, pacote 1kg",
       "quantidade": 200,
       "fornecedor": "Campo Verde Alimentos",
-      "dataEntrada": "2025-11-17",
       "tipoProduto": "Comida",
+      "dataEntrada": "2025-11-17",
       "dataValidade": "2027-04-10",
-      "valor": "9.20"
+      "valor": "9.20",
+      "id": "2002"
     },
     {
       "id": "2003",
