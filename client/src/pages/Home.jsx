@@ -88,7 +88,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className={styles.cardLabel}>Fornecedores</div>
-                    <div className={styles.cardValue}>{clientes.length}</div>
+                    <div style={{color: "white"}} className={styles.cardValue}>{clientes.length}</div>
                   </div>
                 </div>
               </Card.Body>
@@ -104,7 +104,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className={styles.cardLabel}>Produtos</div>
-                    <div className={styles.cardValue}>{produtosCount}</div>
+                    <div style={{color: "white"}} className={styles.cardValue}>{produtosCount}</div>
                   </div>
                 </div>
               </Card.Body>
@@ -120,7 +120,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className={styles.cardLabel}>Funcionários</div>
-                    <div className={styles.cardValue}>{funcionariosCount}</div>
+                    <div style={{color: "white"}} className={styles.cardValue}>{funcionariosCount}</div>
                   </div>
                 </div>
               </Card.Body>
