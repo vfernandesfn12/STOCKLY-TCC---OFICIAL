@@ -25,6 +25,7 @@ const Relatorios = () => {
 
         <h4 className={styles.Title}>Histórico de Movimentações</h4>
         <p className={styles.SubTitle}>Entrada e Saída de produtos</p>
+        
         {/* TABELA DE MOVIMENTAÇÕES */}
         <Row className={styles.TabelaWrapper}>
           <Col>
