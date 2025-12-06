@@ -41,7 +41,11 @@ const BarraNavegacao = () => {
     >
       {/* Logo da empresa */}
       <Navbar.Brand as={NavLink} to="/home" className="text-white mb-3">
-        <img className="fs-4" src={logo} style={{ width: "50px", height: "50px" }}/>
+        <img
+          className="fs-4"
+          src={logo}
+          style={{ width: "50px", height: "50px" }}
+        />
         <span className="fs-5 ms-2">STOCKLY</span>
       </Navbar.Brand>
 
@@ -93,38 +97,6 @@ const BarraNavegacao = () => {
           </Accordion.Item>
           {/* fim produtos */}
 
-          {/* Páginas Clientes */}
-          <Accordion.Item eventKey="1" className="bg-dark text-white">
-            <Accordion.Header className={styles.accordionHeader}>
-              <FaHandHoldingUsd className="fs-4" />
-              <span className="ms-2 fs-5"> Fornecedores </span>
-            </Accordion.Header>
-            <Accordion.Body className={`p-0 bg-dark ${styles.accordionBody}`}>
-              <Nav className="flex-column">
-                {/* Opção 1 */}
-                <Nav.Link
-                  as={NavLink}
-                  to="/clientes"
-                  className="text-white ps-4"
-                >
-                  <HiMiniClipboardDocumentList className="fs-5" />
-                  <span className="ms-2 fs-5"> Listar </span>
-                </Nav.Link>
-
-                {/* Opção 2 */}
-                <Nav.Link
-                  as={NavLink}
-                  to="/clientes/cadastrar"
-                  className="text-white ps-4"
-                >
-                  <AiOutlinePlus className="fs-5" />
-                  <span className="ms-2 fs-5"> Adicionar </span>
-                </Nav.Link>
-              </Nav>
-            </Accordion.Body>
-          </Accordion.Item>
-          {/* fim clientes */}
-
           {/* Páginas Func */}
           <Accordion.Item eventKey="2" className="bg-dark text-white">
             <Accordion.Header className={styles.accordionHeader}>
@@ -156,7 +128,6 @@ const BarraNavegacao = () => {
             </Accordion.Body>
           </Accordion.Item>
           {/* fim Func */}
-
         </Accordion>
       </Nav>
 
