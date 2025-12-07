@@ -231,62 +231,37 @@
       "valor": "7.30"
     },
     {
-      "id": "2019",
-      "nome": "Banana Prata",
-      "codigo": "BNP028",
-      "descricao": "Banana prata 1kg",
-      "quantidade": 140,
-      "fornecedor": "Distribuidora FrutaSul",
-      "dataEntrada": "2025-11-23",
-      "tipoProduto": "Comida",
-      "dataValidade": "2025-12-03",
-      "valor": "5.20"
-    },
-    {
-      "id": "2020",
-      "nome": "Maçã Gala",
-      "codigo": "MCG029",
-      "descricao": "Maçã gala fresca 1kg",
-      "quantidade": 160,
-      "fornecedor": "Pomareira Nacional",
-      "dataEntrada": "2025-11-24",
-      "tipoProduto": "Comida",
-      "dataValidade": "2025-12-10",
-      "valor": "8.40"
-    },
-    {
-      "id": "a50b",
+      "id": "4899",
       "nome": "Café Pelé",
-      "codigo": "1357",
-      "descricao": "Mais torrado? Só se for carvão.",
-      "quantidade": "8",
-      "fornecedor": "Café",
-      "dataEntrada": "2025-12-08",
+      "codigo": "ARZ775",
+      "descricao": "Mais torrado??\nSó se for carvão",
+      "quantidade": "5",
+      "fornecedor": "Grãos & Cia",
+      "dataEntrada": "2025-12-07",
       "tipoProduto": "Outro",
-      "dataValidade": "2025-12-13",
+      "dataValidade": "2025-12-11",
       "valor": "60"
     }
   ],
   "funcionarios": [
     {
+      "id": "a7cc",
       "nome_funcionario": "Joao",
       "cpf": "175.784.637-99",
-      "telefone": "11111111111",
-      "email": "jpdc@gmail.com",
+      "telefone": "27995026326",
+      "email": "joao@gmail.com",
       "departamento": "RH",
-      "cargo": "aas",
-      "fotoUrl": "https://s2-galileu.glbimg.com/uNEmxS89cbcamZwvIpRCkWquGwI=/0x0:1386x888/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fde5cd494fb04473a83fa5fd57ad4542/internal_photos/bs/2023/m/e/F8xdjfQDGBUXCLqg7oMw/21.jpg",
-      "id": "a7cc"
+      "fotoUrl": "https://s2-galileu.glbimg.com/uNEmxS89cbcamZwvIpRCkWquGwI=/0x0:1386x888/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fde5cd494fb04473a83fa5fd57ad4542/internal_photos/bs/2023/m/e/F8xdjfQDGBUXCLqg7oMw/21.jpg"
     },
     {
-      "nome_funcionario": "Judites",
+      "id": "ccf9",
+      "nome_funcionario": "Jubscreudi",
       "cpf": "178.854.684-99",
       "telefone": "2799856326",
       "email": "jubscreudi@gmail.com",
       "departamento": "RH",
       "cargo": "Assistente",
-      "fotoUrl": "https://th.bing.com/th/id/R.2196f16c9be19ff73c37d70bbc6b0b0a?rik=cPkgcXn%2bxRqrXQ&pid=ImgRaw&r=0",
-      "id": "ccf9"
+      "fotoUrl": "https://th.bing.com/th/id/R.2196f16c9be19ff73c37d70bbc6b0b0a?rik=cPkgcXn%2bxRqrXQ&pid=ImgRaw&r=0"
     },
     {
       "id": "0358",
