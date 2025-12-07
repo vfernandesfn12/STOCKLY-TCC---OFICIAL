@@ -12,11 +12,11 @@ const EditarFuncionario = () => {
 
   useEffect(() => {
     async function carregarFuncionario() {
-      console.log("ID RECEBIDO NA URL:", id); // ✅ DEBUG 1
+      console.log("ID RECEBIDO NA URL:", id); // 
 
       const dados = await buscarFuncionarioPorId(id);
 
-      console.log("FUNCIONÁRIO RETORNADO DA API:", dados); // ✅ DEBUG 2
+      console.log("FUNCIONÁRIO RETORNADO DA API:", dados); // 
 
       setFuncionario(dados);
     }
