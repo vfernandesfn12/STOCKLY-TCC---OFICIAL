@@ -1,14 +1,30 @@
-// Importando components
 import Grafico from "../../components/Grafico/Grafico.jsx";
-
 import styles from "./Relatorios.module.css";
-
-import { Row, Col, Container } from "react-bootstrap";
-
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { useMovimentacoes } from "../../hooks/useMovimentacoes.js";
+import { useMovimentacoesRecarga } from "../../hooks/useMovimentacoes.js";
+import jsPDF from "jspdf";
 
 const Relatorios = () => {
-  const movimentacoes = useMovimentacoes();
+  const movimentacoes = useMovimentacoes() || [];
+  const { limparMovimentacoes } = useMovimentacoesRecarga();
+
+  function exportarPDF() {
+    const pdf = new jsPDF();
+    pdf.text("Relatório de Movimentações", 10, 10);
+
+    movimentacoes.forEach((mov, index) => {
+      pdf.text(
+        `${index + 1} - ${mov.produto} | ${mov.tipo} | ${mov.quantidade} | ${
+          mov.data
+        }`,
+        10,
+        20 + index * 8
+      );
+    });
+
+    pdf.save("relatorio_movimentacoes.pdf");
+  }
 
   return (
     <div className={styles.Container}>
@@ -23,10 +39,18 @@ const Relatorios = () => {
           <Grafico />
         </div>
 
+        <Row className="d-flex justify-content-center gap-3 mb-4">
+          <Button variant="danger" onClick={limparMovimentacoes}>
+            Limpar Histórico
+          </Button>
+
+          <Button variant="success" onClick={exportarPDF}>
+            Exportar PDF
+          </Button>
+        </Row>
+
         <h4 className={styles.Title}>Histórico de Movimentações</h4>
-        <p className={styles.SubTitle}>Entrada e Saída de produtos</p>
-        
-        {/* TABELA DE MOVIMENTAÇÕES */}
+
         <Row className={styles.TabelaWrapper}>
           <Col>
             <table className="table table-striped text-center">
@@ -45,19 +69,19 @@ const Relatorios = () => {
                     <td colSpan="4">Nenhuma movimentação encontrada</td>
                   </tr>
                 ) : (
-                  movimentacoes.map((mov) => (
-                    <tr key={mov.id}>
-                      <td>{mov.produto?.nome_prod}</td>
+                  movimentacoes.map((mov, index) => (
+                    <tr key={index}>
+                      <td>{mov.produto}</td>
                       <td
                         style={{
-                          color: mov.tipo === "ENTRADA" ? "green" : "red",
+                          color: mov.tipo === "Entrada" ? "green" : "red",
                           fontWeight: "bold",
                         }}
                       >
                         {mov.tipo}
                       </td>
                       <td>{mov.quantidade}</td>
-                      <td>{new Date(mov.data).toLocaleString()}</td>
+                      <td>{mov.data}</td>
                     </tr>
                   ))
                 )}

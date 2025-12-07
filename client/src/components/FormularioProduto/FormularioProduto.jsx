@@ -7,25 +7,24 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useEffect } from "react";
 
-
 // Importando a função useform do pacote hook-form
 import { useForm } from "react-hook-form";
 
 // Importando o hook de produtos
 import { useInserirProduto, useAtualizarProduto } from "../../hooks/UseProdutos";
-
+import { useMovimentacoesRecarga } from "../../hooks/useMovimentacoes";
 
 const FormularioProduto = (props) => {
   const navigate = useNavigate();
 
-  //IMPORTAÇÂO DAS FUNÇÕES DO HOOK USEPRODUTOS
-  //usando a função de inserir produto
+  // FUNÇÕES DO HOOK DE PRODUTOS
   const { inserirProduto } = useInserirProduto();
   const { atualizarProduto } = useAtualizarProduto();
 
-  // register = cria um objeto com os valores retirados dos inputs
-  // handleSumbit = envia os dados formulário, caso dê erro ou sucesso
-  // formState { errors } = objeto que guarda uma lista de erros que aconteceram na tentativa do envio
+  // HOOK DO CONTEXTO DE MOVIMENTAÇÕES (localStorage)
+  const { adicionarMovimentacao } = useMovimentacoesRecarga();
+
+  // react-hook-form
   const {
     register,
     handleSubmit,
@@ -47,21 +46,43 @@ const FormularioProduto = (props) => {
         valor: props.produto.valor || "",
       });
     }
-  }, [props.produto]);
+  }, [props.page, props.produto, reset]);
 
-  // FUNÇÕES QUE LIDAM COM O SUCESSO OU ERRO DO FORMUÁRIO
-  // Função para caso dê certo na validação do formulário
-  // datat é o objeto com os dados do formulário
-
+  // SUBMIT
   const onSubmit = async (data) => {
-    if (props.page === "cadastro") {
-      await inserirProduto(data);
-      alert("Produto cadastrado com sucesso!");
-      navigate("/produtos");  // 🔥 redireciona após cadastrar
-    } else if (props.page === "editar") {
-      await atualizarProduto(data, props.produto.id);
-      alert("Produto atualizado com sucesso!");
-      navigate("/produtos");  // já estava funcionando
+    try {
+      if (props.page === "cadastro") {
+        // Inserir produto (assume-se que inserirProduto retorna uma Promise)
+        await inserirProduto(data);
+
+        // Adicionar movimentação localmente (localStorage via context)
+        // Verifica se a função existe antes de chamar (evita erro)
+        if (typeof adicionarMovimentacao === "function") {
+          adicionarMovimentacao({
+            tipo: "Entrada",
+            produto: data.nome,
+            data: new Date().toLocaleString(),
+            quantidade: data.quantidade,
+            valor: data.valor,
+            detalhes: data.descricao || "",
+          });
+        } else {
+          console.warn("adicionarMovimentacao não disponível no contexto de movimentações");
+        }
+
+        alert("Produto cadastrado com sucesso!");
+        navigate("/produtos");
+      } else if (props.page === "editar") {
+        // Atualizar produto
+        await atualizarProduto(data, props.produto.id);
+
+        // Dependendo do comportamento desejado, não adicionamos movimentação ao editar.
+        alert("Produto atualizado com sucesso!");
+        navigate("/produtos");
+      }
+    } catch (err) {
+      console.error("Erro no onSubmit:", err);
+      alert("Ocorreu um erro ao salvar o produto. Veja o console.");
     }
   };
 
@@ -79,86 +100,49 @@ const FormularioProduto = (props) => {
         </Form.Label>
         <Row>
           <Col md={12} lg={12}>
-            {/* Caixinha de Nome */}
+            {/* Nome */}
             <FloatingLabel controlId="FI-NOME" label="Nome" className="mb-5">
               <Form.Control
                 type="text"
                 {...register("nome", {
                   required: "O nome é obrigatório",
-                  minLength: {
-                    value: 2,
-                    message: "O nome deve ter pelo menos dois caracteres",
-                  },
-                  maxLength: {
-                    value: 30,
-                    message: "O nome deve ter no máximo 30 caracteres",
-                  },
+                  minLength: { value: 2, message: "O nome deve ter pelo menos dois caracteres" },
+                  maxLength: { value: 30, message: "O nome deve ter no máximo 30 caracteres" },
                 })}
-              ></Form.Control>
+              />
               {errors.nome && <p className="error"> {errors.nome.message} </p>}
             </FloatingLabel>
-            {/* Fim de caixinha de Nome */}
 
-            {/* Caixinha de SKU */}
-            <FloatingLabel
-              controlId="FI-CODIGO"
-              label="Código"
-              className="mb-5"
-            >
+            {/* Código */}
+            <FloatingLabel controlId="FI-CODIGO" label="Código" className="mb-5">
               <Form.Control
                 type="text"
                 {...register("codigo", {
                   required: "O código é obrigatório",
-                  minLength: {
-                    value: 2,
-                    message: "O código deve ter pelo menos dois caracteres",
-                  },
-                  maxLength: {
-                    value: 10,
-                    message: "O código deve ter no máximo 10 caracteres",
-                  },
+                  minLength: { value: 2, message: "O código deve ter pelo menos dois caracteres" },
+                  maxLength: { value: 10, message: "O código deve ter no máximo 10 caracteres" },
                 })}
-              ></Form.Control>
-              {errors.codigo && (
-                <p className="error"> {errors.codigo.message} </p>
-              )}
+              />
+              {errors.codigo && <p className="error"> {errors.codigo.message} </p>}
             </FloatingLabel>
-            {/* Fim de caixinha de SKU */}
 
-            {/* Caixinha de descrição */}
-            <FloatingLabel
-              controlId="FI-DESCRICAO"
-              label="Descrição"
-              className="mb-5"
-            >
+            {/* Descrição */}
+            <FloatingLabel controlId="FI-DESCRICAO" label="Descrição" className="mb-5">
               <Form.Control
-                style={{
-                  height: "120px",
-                  borderColor: "#5F6D7C",
-                }} // Altura maior
-                as="textarea" // isso transforma em área de texto
-                type="text"
+                style={{ height: "120px", borderColor: "#5F6D7C" }}
+                as="textarea"
                 {...register("descricao", {
                   required: "A descrição é obrigatória",
-                  minLength: {
-                    value: 2,
-                    message: "A descrição deve ter pelo menos dois caracteres",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "A descrição deve ter no máximo 100 caracteres",
-                  },
+                  minLength: { value: 2, message: "A descrição deve ter pelo menos dois caracteres" },
+                  maxLength: { value: 100, message: "A descrição deve ter no máximo 100 caracteres" },
                 })}
-              ></Form.Control>
-              {errors.descricao && (
-                <p className="error"> {errors.descricao.message} </p>
-              )}
+              />
+              {errors.descricao && <p className="error"> {errors.descricao.message} </p>}
             </FloatingLabel>
-            {/* Fim de caixinha de descrição */}
           </Col>
         </Row>
 
-        {/* CAMPOS NOVOS: QUANTIDADE E FORNECEDOR */}
+        {/* Quantidade e Fornecedor */}
         <Row className="mb-3">
           <Col md={6}>
             <FloatingLabel label="Quantidade">
@@ -186,7 +170,6 @@ const FormularioProduto = (props) => {
             </FloatingLabel>
           </Col>
         </Row>
-
 
         {/* Data Entrada e Tipo do produto */}
         <Row className="mb-3">
@@ -216,9 +199,7 @@ const FormularioProduto = (props) => {
                 <option value="Higiene">Higiene</option>
                 <option value="Outro">Outro</option>
               </Form.Select>
-              {errors.tipoProduto && (
-                <p className="error"> {errors.tipoProduto.message} </p>
-              )}
+              {errors.tipoProduto && <p className="error"> {errors.tipoProduto.message} </p>}
             </FloatingLabel>
           </Col>
         </Row>
@@ -231,15 +212,9 @@ const FormularioProduto = (props) => {
                 type="date"
                 {...register("dataValidade", {
                   required: "A data de validade é obrigatório",
-                  min: {
-                    value: 0.01,
-                    message: "A data de validade deve ser maior que 0",
-                  },
                 })}
               />
-              {errors.dataValidade && (
-                <p className="error"> {errors.dataValidade.message} </p>
-              )}
+              {errors.dataValidade && <p className="error"> {errors.dataValidade.message} </p>}
             </FloatingLabel>
           </Col>
           <Col md={6}>
@@ -249,20 +224,15 @@ const FormularioProduto = (props) => {
                 step="0.01"
                 {...register("valor", {
                   required: "O valor é obrigatório",
-                  min: {
-                    value: 0.01,
-                    message: "O valor deve ser maior que 0",
-                  },
+                  min: { value: 0.01, message: "O valor deve ser maior que 0" },
                 })}
               />
-              {errors.valor && (
-                <p className="error"> {errors.valor.message} </p>
-              )}
+              {errors.valor && <p className="error"> {errors.valor.message} </p>}
             </FloatingLabel>
           </Col>
         </Row>
 
-        {/* Botão para envio do formulário */}
+        {/* Botões */}
         <div className="d-flex gap-2 justify-content-center">
           <Button variant="primary" size="lg" type="submit" style={{ backgroundColor: "#344250" }}>
             {props.page === "editar" ? "Atualizar" : "Cadastrar"}
@@ -271,11 +241,7 @@ const FormularioProduto = (props) => {
             type="button"
             variant="danger"
             className="mt-6 px-4"
-            onClick={() => {
-              // Função para limpar o formulário
-              reset(); // função do useForm para limpar
-
-            }}
+            onClick={() => reset()}
           >
             Limpar
           </Button>
@@ -283,6 +249,6 @@ const FormularioProduto = (props) => {
       </Form>
     </div>
   );
-}
+};
 
-export default FormularioProduto
+export default FormularioProduto;

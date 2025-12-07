@@ -253,6 +253,18 @@
       "tipoProduto": "Comida",
       "dataValidade": "2025-12-10",
       "valor": "8.40"
+    },
+    {
+      "id": "a50b",
+      "nome": "Café Pelé",
+      "codigo": "1357",
+      "descricao": "Mais torrado? Só se for carvão.",
+      "quantidade": "8",
+      "fornecedor": "Café",
+      "dataEntrada": "2025-12-08",
+      "tipoProduto": "Outro",
+      "dataValidade": "2025-12-13",
+      "valor": "60"
     }
   ],
   "funcionarios": [

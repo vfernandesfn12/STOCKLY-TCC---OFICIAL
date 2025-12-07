@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { BsSearch } from "react-icons/bs";
 
 import styles from "./VerProdutos.module.css";
 
 import { useListaProdutos, useDeletaProduto } from "../../hooks/UseProdutos";
+import { useMovimentacoesRecarga } from "../../hooks/useMovimentacoes";
 
 const VerProdutos = () => {
   const produtos = useListaProdutos();
   const { deletarProduto } = useDeletaProduto();
+  const { adicionarMovimentacao } = useMovimentacoesRecarga();
 
   // Busca por nome
   const [buscaNome, setBuscaNome] = useState("");
@@ -21,11 +22,20 @@ const VerProdutos = () => {
       )
     : produtos;
 
-  const handleDelete = async (id, nome) => {
-    if (confirm(`Deseja realmente excluir o produto ${nome}?`)) {
-      await deletarProduto(id);
-      alert(`Produto ${nome} deletado com sucesso!`);
-      window.location.reload();
+  // ✅ AGORA REGISTRA A SAÍDA NO RELATÓRIO
+  const handleDelete = async (produto) => {
+    if (confirm(`Deseja realmente excluir o produto ${produto.nome}?`)) {
+      await deletarProduto(produto.id);
+
+      // ✅ REGISTRO DE SAÍDA
+      adicionarMovimentacao({
+        tipo: "Saída",
+        produto: produto.nome,
+        quantidade: produto.quantidade,
+        data: new Date().toLocaleString(),
+      });
+
+      alert(`Produto ${produto.nome} deletado com sucesso!`);
     }
   };
 
@@ -68,8 +78,8 @@ const VerProdutos = () => {
                 <th><strong>Nome</strong></th>
                 <th><strong>Código</strong></th>
                 <th><strong>Descrição</strong></th>
-                <th><strong>Quantidade</strong></th>        {/* NOVO */}
-                <th><strong>Fornecedor</strong></th>        {/* NOVO */}
+                <th><strong>Quantidade</strong></th>
+                <th><strong>Fornecedor</strong></th>
                 <th><strong>Tipo</strong></th>
                 <th><strong>Entrada</strong></th>
                 <th><strong>Validade</strong></th>
@@ -85,8 +95,8 @@ const VerProdutos = () => {
                     <td>{pro.nome}</td>
                     <td>{pro.codigo}</td>
                     <td>{pro.descricao}</td>
-                    <td>{pro.quantidade}</td>   {/* NOVO */}
-                    <td>{pro.fornecedor}</td>   {/* NOVO */}
+                    <td>{pro.quantidade}</td>
+                    <td>{pro.fornecedor}</td>
                     <td>{pro.tipoProduto}</td>
                     <td>{pro.dataEntrada}</td>
                     <td>{pro.dataValidade}</td>
@@ -103,9 +113,10 @@ const VerProdutos = () => {
                           </Link>
                         </button>
 
+                        {/* ✅ AGORA PASSAMOS O PRODUTO INTEIRO */}
                         <button
                           className={styles.btnExcluir}
-                          onClick={() => handleDelete(pro.id, pro.nome)}
+                          onClick={() => handleDelete(pro)}
                         >
                           Excluir
                         </button>
