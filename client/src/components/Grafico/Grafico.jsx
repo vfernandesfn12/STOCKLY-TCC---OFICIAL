@@ -9,20 +9,7 @@ export default function Grafico() {
   const [filtro, setFiltro] = useState("anual");
 
   // Meses em PT-BR
-  const meses = [
-    "Jan",
-    "Fev",
-    "Mar",
-    "Abr",
-    "Mai",
-    "Jun",
-    "Jul",
-    "Ago",
-    "Set",
-    "Out",
-    "Nov",
-    "Dez",
-  ];
+  const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
   // Processa as movimentações e soma por mês
   const dadosProcessados = useMemo(() => {
