@@ -1,4 +1,5 @@
-// Importação dos componentes do bootstrap
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,18 +7,19 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
-// Importando a função useForm do react-hook-form
 import { useForm } from "react-hook-form";
 
-// Importando os hooks de funcionários
 import {
   useListaDepartamentos,
   useInserirFuncionario,
+  useAtualizarFuncionario
 } from "../../hooks/UseFuncionarios";
 
 const FormularioFuncionario = (props) => {
+  const navigate = useNavigate();
   // Hook de inserção de funcionário
   const { inserirFuncionario } = useInserirFuncionario();
+  const { atualizarFuncionario } = useAtualizarFuncionario();
 
   // Controle do formulário
   const {
@@ -25,10 +27,27 @@ const FormularioFuncionario = (props) => {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm();
+    reset,
+  } = useForm({
+    defaultValues: props.funcionario || {},
+  });
 
   // Lista de departamentos
   const departamentos = useListaDepartamentos();
+
+  useEffect(() => {
+    if (props.page === "editar" && props.funcionario) {
+      reset({
+        nome_funcionario: props.funcionario.nome_funcionario,
+        cpf: props.funcionario.cpf,
+        telefone: props.funcionario.telefone,
+        email: props.funcionario.email,
+        departamento: props.funcionario.departamento,
+        cargo: props.funcionario.cargo,
+        fotoUrl: props.funcionario.fotoUrl,
+      });
+    }
+  }, [props.funcionario, props.page, reset]);
 
   // Variável de funcionário sem imagem
   const linkImagem =
@@ -38,14 +57,17 @@ const FormularioFuncionario = (props) => {
   const imagemAtual = watch("fotoUrl");
 
   // Função ao enviar formulário com sucesso
-  const onSubmit = (data) => {
-    console.log("Dados:", data);
+  const onSubmit = async (data) => {
     if (props.page === "cadastro") {
-      inserirFuncionario(data);
-      alert("Funcionário cadastrado com sucesso");
+      await inserirFuncionario(data);
+      alert("Funcionário cadastrado com sucesso!");
     } else {
-      // Aqui poderia ser edição
+      await atualizarFuncionario(data, props.funcionario.id);
+      alert("Funcionário atualizado com sucesso!");
     }
+
+    // ✅ REDIRECIONA PARA A TELA DE LISTAGEM
+    navigate("/funcionarios");
   };
 
   // Função ao ocorrer erro na validação
@@ -60,7 +82,9 @@ const FormularioFuncionario = (props) => {
         className="mt-3 w-full"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <h1 className="mb-5">Cadastro de Funcionário</h1>
+        <h1 className="mb-5">
+          {props.page === "editar" ? "Editar Funcionário" : "Cadastro de Funcionário"}
+        </h1>
         <Row>
           <Col md={12} lg={6}>
             {/* Nome do Funcionário */}
@@ -142,6 +166,7 @@ const FormularioFuncionario = (props) => {
               className="mb-5"
             >
               <Form.Select
+                defaultValue={props.funcionario?.departamento}
                 {...register("departamento", {
                   validate: (value) =>
                     value !== "0" || "Escolha um departamento",
@@ -165,6 +190,7 @@ const FormularioFuncionario = (props) => {
             <FloatingLabel controlId="FI-CARGO" label="Cargo" className="mb-5">
               <Form.Control
                 type="text"
+                defaultValue={props.funcionario?.cargo}
                 {...register("cargo", {
                   required: "O cargo é obrigatório",
                   minLength: {
@@ -176,11 +202,12 @@ const FormularioFuncionario = (props) => {
                     message: "O cargo deve ter no máximo 30 caracteres",
                   },
                 })}
-              ></Form.Control>
-              {errors.marca && (
-                <p className="error"> {errors.cargo.message} </p>
+              />
+              {errors.cargo && (
+                <p className="error">{errors.cargo.message}</p>
               )}
             </FloatingLabel>
+
             {/* Foto do Funcionário */}
             <Form.Group controlId="FI-FOTO" className="mb-5">
               <FloatingLabel
