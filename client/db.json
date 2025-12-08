@@ -133,18 +133,6 @@
       "valor": "5.49"
     },
     {
-      "id": "2009",
-      "nome": "Iogurte Natural",
-      "codigo": "IGT018",
-      "descricao": "Iogurte natural 170g",
-      "quantidade": 140,
-      "fornecedor": "Laticínios Montela",
-      "dataEntrada": "2025-11-26",
-      "tipoProduto": "Comida",
-      "dataValidade": "2025-12-08",
-      "valor": "2.89"
-    },
-    {
       "id": "2010",
       "nome": "Queijo Prato",
       "codigo": "QJP019",
