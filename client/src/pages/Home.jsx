@@ -56,12 +56,29 @@ export default function Home() {
     return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
   };
 
-  // produtos que vencem nos próximos 5 dias (inclui hoje e até +5)
+  // produtos que vencem nos próximos 5 dias (inclui vencidos: dias <= 0)
   const produtosPertoVencer = Array.isArray(produtos)
-    ? produtos.filter((p) => {
-        const dias = diasAteValidade(p.dataValidade);
-        return dias !== null && dias >= 0 && dias <= 5;
-      })
+    ? produtos
+        .map((p) => ({ ...p, _dias: diasAteValidade(p.dataValidade) }))
+        .filter((p) => p._dias !== null && p._dias <= 5)
+        .sort((a, b) => {
+          const aDias = a._dias;
+          const bDias = b._dias;
+
+          const aVencido = aDias <= 0;
+          const bVencido = bDias <= 0;
+
+          // Produtos vencidos vêm primeiro
+          if (aVencido && !bVencido) return -1;
+          if (!aVencido && bVencido) return 1;
+
+          // Se ambos vencidos -> mostrar mais recentemente vencido primeiro (ex: -1 antes de -5)
+          if (aVencido && bVencido) return bDias - aDias;
+
+          // Caso ambos não vencidos -> os com menos dias (mais próximos) vêm antes
+          return aDias - bDias;
+        })
+        .slice(0, 5)
     : [];
 
   return (
@@ -76,7 +93,7 @@ export default function Home() {
           </Col>
         </Row>
 
-        <Row className="g-3 mb-4">
+        <Row className="g-4 mb-4 justify-content-center">
           
 
           <Col md={4}>
@@ -196,21 +213,26 @@ export default function Home() {
                           <td>{p.nome}</td>
                           <td>{p.codigo}</td>
                           <td>{p.dataValidade}</td>
-                          <td>
-                            {alerta ? (
-                              <span
-                                className={styles.badgeWarning}
-                                title="Prazo de validade próximo"
-                              >
-                                <BsExclamationTriangle /> {dias} dia
-                                {dias !== 1 ? "s" : ""}
-                              </span>
-                            ) : (
-                              <span>
-                                {dias} dia{dias !== 1 ? "s" : ""}
-                              </span>
-                            )}
-                          </td>
+                              <td>
+                                {(() => {
+                                  if (dias === null) return <span>-</span>;
+                                  const estaVencido = dias <= 0;
+                                  const textoDias = estaVencido
+                                    ? "Vencido"
+                                    : `${dias} dia${dias !== 1 ? "s" : ""}`;
+
+                                  return alerta ? (
+                                    <span
+                                      className={styles.badgeWarning}
+                                      title="Prazo de validade próximo"
+                                    >
+                                      <BsExclamationTriangle /> {textoDias}
+                                    </span>
+                                  ) : (
+                                    <span>{textoDias}</span>
+                                  );
+                                })()}
+                              </td>
                           <td>{p.valor}</td>
                           {/* coluna de ações removida — permanece somente informação */}
                         </tr>

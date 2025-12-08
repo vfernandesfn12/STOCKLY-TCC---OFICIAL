@@ -54,19 +54,18 @@ const Login = () => {
 
   //Caso o envio dê certo
   // data = objeto com todas as informações preenchidas nos campos do formulário
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Dados enviados:", data);
 
-    //Cria uma variável para armazenar a resposta completa que veio da função
-    const resposta = verificaLogin(data);
+    //Chama a função assíncrona que verifica o login
+    const resposta = await verificaLogin(data);
 
     //Caso a resposta seja positiva mostra o alerta e leva ele pra home
     if (resposta === "Login efetuado com sucesso") {
       alert(resposta);
       navigate("/home");
-    }
-    //Se não, avisa o alerta lá
-    else {
+    } else {
+      // exibe o alerta de erro
       setAlertaClasse("my-3 w-75 mx-auto");
     }
   };

@@ -11,29 +11,30 @@ const EditarUsuario = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [usuario, setUsuario] = useState(null);
+  const [funcionario, setFuncionario] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function carregarUsuario() {
+    async function carregarFuncionario() {
       try {
-        const req = await fetch(`${url}/usuarios/${Number(id)}`);
+        const req = await fetch(`${url}/funcionarios/${id}`);
+        if (!req.ok) throw new Error(`HTTP ${req.status}`);
         const res = await req.json();
-        setUsuario(res);
+        setFuncionario(res);
       } catch (erro) {
-        console.error("Erro ao buscar usuário:", erro);
+        console.error("Erro ao buscar funcionário:", erro);
         alert("Erro ao carregar usuário");
       } finally {
         setLoading(false);
       }
     }
 
-    carregarUsuario();
+    carregarFuncionario();
   }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUsuario((prev) => ({
+    setFuncionario((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -43,19 +44,19 @@ const EditarUsuario = () => {
     e.preventDefault();
 
     try {
-      await fetch(`${url}/usuarios/${Number(id)}`, {
+      await fetch(`${url}/funcionarios/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(usuario),
+        body: JSON.stringify(funcionario),
       });
 
-      alert("Perfil atualizado com sucesso!");
-      navigate("/home");
+      alert("Funcionário atualizado com sucesso!");
+      navigate("/funcionarios");
     } catch (erro) {
-      console.error("Erro ao atualizar usuário:", erro);
-      alert("Erro ao atualizar perfil");
+      console.error("Erro ao atualizar funcionário:", erro);
+      alert("Erro ao atualizar funcionário");
     }
   };
 
@@ -63,20 +64,20 @@ const EditarUsuario = () => {
     return <p className="text-center mt-4">Carregando usuário...</p>;
   }
 
-  if (!usuario) {
+  if (!funcionario) {
     return <p className="text-center text-danger">Usuário não encontrado.</p>;
   }
 
   return (
     <Container style={{ maxWidth: "600px", color: "#ffffffff" }}>
-      <h2 className="text-center my-4 color:#ffffffff">Editar Meu Perfil</h2>
+      <h2 className="text-center my-4 color:#ffffffff">Editar Funcionário</h2>
 
       <Form onSubmit={handleSubmit}>
         <FloatingLabel label="Nome" className="mb-4">
           <Form.Control
             type="text"
-            name="nome"
-            value={usuario.nome || ""}
+            name="nome_funcionario"
+            value={funcionario.nome_funcionario || ""}
             onChange={handleChange}
             required
           />
@@ -86,25 +87,51 @@ const EditarUsuario = () => {
           <Form.Control
             type="email"
             name="email"
-            value={usuario.email || ""}
+            value={funcionario.email || ""}
             onChange={handleChange}
             required
           />
         </FloatingLabel>
 
-        <FloatingLabel label="Senha" className="mb-3">
+        <FloatingLabel label="CPF" className="mb-3">
           <Form.Control
-            type="password"
-            name="senha"
-            value={usuario.senha || ""}
+            type="text"
+            name="cpf"
+            value={funcionario.cpf || ""}
             onChange={handleChange}
-            required
+          />
+        </FloatingLabel>
+
+        <FloatingLabel label="Telefone" className="mb-3">
+          <Form.Control
+            type="text"
+            name="telefone"
+            value={funcionario.telefone || ""}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel label="Departamento" className="mb-3">
+          <Form.Control
+            type="text"
+            name="departamento"
+            value={funcionario.departamento || ""}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+
+        <FloatingLabel label="Cargo" className="mb-3">
+          <Form.Control
+            type="text"
+            name="cargo"
+            value={funcionario.cargo || ""}
+            onChange={handleChange}
           />
         </FloatingLabel>
 
         <div className="d-flex justify-content-center mt-4">
           <Button type="submit" size="lg">
-            Atualizar Perfil
+            Atualizar Funcionário
           </Button>
         </div>
       </Form>
