@@ -1,12 +1,27 @@
-# React + Vite
+# Manual do Sistema
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Configuração Inicial
 
-Currently, two official plugins are available:
+Após baixar o repositório ou os arquivos:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Instalar dependências:**
+   - Abra o terminal e navegue até a pasta `client`
+   - Execute o comando: `npm i` (pressione Enter)
 
-## Expanding the ESLint configuration
+2. **Configurar ambiente:**
+   - Dentro da pasta raiz do projeto (`client`), crie um arquivo chamado `.env`
+   - Adicione a seguinte linha no arquivo `.env`:
+     ```
+     VITE_API_URL=http://localhost:5000
+     ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. **Iniciar o sistema:**
+   - Frontend: Execute `npm run dev`
+   - Backend: Execute `npm run server`
+
+## Acesso ao Sistema
+
+Utilize as seguintes credenciais para login:
+
+- **Email:** admin@gmail.com
+- **Senha:** 123 
