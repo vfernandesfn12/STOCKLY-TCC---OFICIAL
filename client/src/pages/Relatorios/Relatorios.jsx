@@ -15,8 +15,7 @@ const Relatorios = () => {
 
     movimentacoes.forEach((mov, index) => {
       pdf.text(
-        `${index + 1} - ${mov.produto} | ${mov.tipo} | ${mov.quantidade} | ${
-          mov.data
+        `${index + 1} - ${mov.produto} | ${mov.tipo} | ${mov.quantidade} | ${mov.data
         }`,
         10,
         20 + index * 8
@@ -81,7 +80,9 @@ const Relatorios = () => {
                         {mov.tipo}
                       </td>
                       <td>{mov.quantidade}</td>
-                      <td>{mov.data}</td>
+                      <td>
+                        {new Date(mov.data).toLocaleString("pt-BR")}
+                      </td>
                     </tr>
                   ))
                 )}

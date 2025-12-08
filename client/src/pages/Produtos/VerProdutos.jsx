@@ -45,7 +45,7 @@ const VerProdutos = () => {
         tipo: "Saída",
         produto: produto.nome,
         quantidade: quantidade,
-        data: new Date().toLocaleString(),
+        data: new Date().toISOString(),
       });
 
       //  MENSAGEM DIFERENTE SE ZERAR O ESTOQUE

@@ -12,12 +12,10 @@ import {
   BsExclamationTriangle,
 } from "react-icons/bs";
 
-import { useListaClientes } from "./Clientes/../../hooks/useClientes";
 import { useListaProdutos } from "../hooks/UseProdutos.js";
 import styles from "./Home.module.css";
 
 export default function Home() {
-  const clientes = useListaClientes();
   const produtos = useListaProdutos();
 
   const [produtosCount, setProdutosCount] = useState(0);
@@ -79,21 +77,7 @@ export default function Home() {
         </Row>
 
         <Row className="g-3 mb-4">
-          <Col md={4}>
-            <Card className={styles.statCard}>
-              <Card.Body>
-                <div className={styles.cardInner}>
-                  <div className={styles.cardIcon}>
-                    <BsPeople />
-                  </div>
-                  <div>
-                    <div className={styles.cardLabel}>Fornecedores</div>
-                    <div style={{color: "white"}} className={styles.cardValue}>{clientes.length}</div>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+          
 
           <Col md={4}>
             <Card className={styles.statCard}>
