@@ -61,7 +61,216 @@
       "tipoProduto": "Comida",
       "dataEntrada": "2025-11-17",
       "dataValidade": "2027-04-10",
+<<<<<<< HEAD
       "valor": "9.20"
+=======
+      "valor": "9.20",
+      "id": "2002"
+    },
+    {
+      "id": "2003",
+      "nome": "Farinha de Trigo",
+      "codigo": "FRN012",
+      "descricao": "Farinha de trigo enriquecida, 1kg",
+      "quantidade": 150,
+      "fornecedor": "Moinhos União",
+      "dataEntrada": "2025-11-22",
+      "tipoProduto": "Comida",
+      "dataValidade": "2026-12-01",
+      "valor": "5.30"
+    },
+    {
+      "id": "2004",
+      "nome": "Açúcar Refinado",
+      "codigo": "ACR013",
+      "descricao": "Pacote de açúcar refinado 1kg",
+      "quantidade": 300,
+      "fornecedor": "Açucareira Brasil",
+      "dataEntrada": "2025-11-18",
+      "tipoProduto": "Comida",
+      "dataValidade": "2028-02-20",
+      "valor": "4.85"
+    },
+    {
+      "id": "2005",
+      "nome": "Café Torrado e Moído",
+      "codigo": "CAF014",
+      "descricao": "Café tradicional 500g",
+      "quantidade": 80,
+      "fornecedor": "Café Bom Sabor",
+      "dataEntrada": "2025-11-16",
+      "tipoProduto": "Bebida",
+      "dataValidade": "2027-01-18",
+      "valor": "15.90"
+    },
+    {
+      "id": "2006",
+      "nome": "Óleo de Soja",
+      "codigo": "OLS015",
+      "descricao": "Garrafa de óleo de soja 900ml",
+      "quantidade": 180,
+      "fornecedor": "Oleosul Distribuidora",
+      "dataEntrada": "2025-11-23",
+      "tipoProduto": "Comida",
+      "dataValidade": "2026-10-03",
+      "valor": "6.10"
+    },
+    {
+      "id": "2007",
+      "nome": "Molho de Tomate",
+      "codigo": "MLT016",
+      "descricao": "Sachê de molho de tomate 340g",
+      "quantidade": 250,
+      "fornecedor": "Sabor Real Alimentos",
+      "dataEntrada": "2025-11-21",
+      "tipoProduto": "Comida",
+      "dataValidade": "2026-09-15",
+      "valor": "2.99"
+    },
+    {
+      "id": "2008",
+      "nome": "Leite Desnatado",
+      "codigo": "LTD017",
+      "descricao": "Leite desnatado 1L",
+      "quantidade": 90,
+      "fornecedor": "Laticínios Vigorvita",
+      "dataEntrada": "2025-11-24",
+      "tipoProduto": "Bebida",
+      "dataValidade": "2026-01-14",
+      "valor": "5.49"
+    },
+    {
+      "id": "2009",
+      "nome": "Iogurte Natural",
+      "codigo": "IGT018",
+      "descricao": "Iogurte natural 170g",
+      "quantidade": 140,
+      "fornecedor": "Laticínios Montela",
+      "dataEntrada": "2025-11-26",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-08",
+      "valor": "2.89"
+    },
+    {
+      "id": "2010",
+      "nome": "Queijo Prato",
+      "codigo": "QJP019",
+      "descricao": "Queijo prato fatiado 200g",
+      "quantidade": 60,
+      "fornecedor": "Laticínios Serra Bela",
+      "dataEntrada": "2025-11-20",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-12",
+      "valor": "13.99"
+    },
+    {
+      "id": "2011",
+      "nome": "Presunto Cozido",
+      "codigo": "PSM020",
+      "descricao": "Presunto cozido fatiado 200g",
+      "quantidade": 70,
+      "fornecedor": "Frios & Sabores",
+      "dataEntrada": "2025-11-19",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-07",
+      "valor": "9.89"
+    },
+    {
+      "id": "2012",
+      "nome": "Peito de Frango",
+      "codigo": "PTF021",
+      "descricao": "Peito de frango congelado 1kg",
+      "quantidade": 110,
+      "fornecedor": "Distribuidora FrangoSul",
+      "dataEntrada": "2025-11-25",
+      "tipoProduto": "Congelados",
+      "dataValidade": "2026-05-20",
+      "valor": "16.50"
+    },
+    {
+      "id": "2013",
+      "nome": "Carne Moída",
+      "codigo": "CRM022",
+      "descricao": "Carne moída bovina 500g",
+      "quantidade": 95,
+      "fornecedor": "Carnes Premium",
+      "dataEntrada": "2025-11-26",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-02",
+      "valor": "18.90"
+    },
+    {
+      "id": "2014",
+      "nome": "Linguiça Toscana",
+      "codigo": "LGT023",
+      "descricao": "Linguiça toscana 1kg",
+      "quantidade": 85,
+      "fornecedor": "Casa das Carnes União",
+      "dataEntrada": "2025-11-23",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-20",
+      "valor": "17.80"
+    },
+    {
+      "id": "2015",
+      "nome": "Peixe Tilápia",
+      "codigo": "PXT024",
+      "descricao": "Tilápia congelada 800g",
+      "quantidade": 70,
+      "fornecedor": "Peixaria do Norte",
+      "dataEntrada": "2025-11-20",
+      "tipoProduto": "Congelados",
+      "dataValidade": "2026-04-01",
+      "valor": "29.50"
+    },
+    {
+      "id": "2016",
+      "nome": "Batata Inglesa",
+      "codigo": "BTT025",
+      "descricao": "Batata inglesa fresca 1kg",
+      "quantidade": 130,
+      "fornecedor": "Hortifruti Brasil",
+      "dataEntrada": "2025-11-22",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-01",
+      "valor": "4.10"
+    },
+    {
+      "id": "2017",
+      "nome": "Cebola Branca",
+      "codigo": "CBL026",
+      "descricao": "Cebola branca 1kg",
+      "quantidade": 125,
+      "fornecedor": "Hortifruti Brasil",
+      "dataEntrada": "2025-11-22",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-05",
+      "valor": "3.80"
+    },
+    {
+      "id": "2018",
+      "nome": "Tomate Carmem",
+      "codigo": "TMT027",
+      "descricao": "Tomate Carmem 1kg",
+      "quantidade": 110,
+      "fornecedor": "Hortifruti Carmem",
+      "dataEntrada": "2025-11-21",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-11-30",
+      "valor": "7.30"
+    },
+    {
+      "id": "4899",
+      "nome": "Café Pelé",
+      "codigo": "ARZ775",
+      "descricao": "Mais torrado??\nSó se for carvão",
+      "quantidade": "5",
+      "fornecedor": "Grãos & Cia",
+      "dataEntrada": "2025-12-07",
+      "tipoProduto": "Outro",
+      "dataValidade": "2025-12-11",
+      "valor": "60"
+>>>>>>> 5db55496d3e261226c2a14a846aa6f7f364bed5c
     }
   ],
 
@@ -70,15 +279,22 @@
       "id": "a7cc",
       "nome_funcionario": "Joao",
       "cpf": "175.784.637-99",
-      "telefone": "11111111111",
-      "email": "jpdc@gmail.com",
+      "telefone": "27995026326",
+      "email": "joao@gmail.com",
       "departamento": "RH",
+<<<<<<< HEAD
       "cargo": "aas",
+=======
+>>>>>>> 5db55496d3e261226c2a14a846aa6f7f364bed5c
       "fotoUrl": "https://s2-galileu.glbimg.com/uNEmxS89cbcamZwvIpRCkWquGwI=/0x0:1386x888/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fde5cd494fb04473a83fa5fd57ad4542/internal_photos/bs/2023/m/e/F8xdjfQDGBUXCLqg7oMw/21.jpg"
     },
     {
       "id": "ccf9",
+<<<<<<< HEAD
       "nome_funcionario": "Judites",
+=======
+      "nome_funcionario": "Jubscreudi",
+>>>>>>> 5db55496d3e261226c2a14a846aa6f7f364bed5c
       "cpf": "178.854.684-99",
       "telefone": "2799856326",
       "email": "jubscreudi@gmail.com",
