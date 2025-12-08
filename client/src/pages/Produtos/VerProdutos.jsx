@@ -4,12 +4,12 @@ import { BsSearch } from "react-icons/bs";
 
 import styles from "./VerProdutos.module.css";
 
-import { useListaProdutos, useDeletaProduto } from "../../hooks/UseProdutos";
+import { useListaProdutos, useRemoverQuantidadeProduto } from "../../hooks/UseProdutos";
 import { useMovimentacoesRecarga } from "../../hooks/useMovimentacoes";
 
 const VerProdutos = () => {
   const produtos = useListaProdutos();
-  const { deletarProduto } = useDeletaProduto();
+  const { removerQuantidade } = useRemoverQuantidadeProduto();
   const { adicionarMovimentacao } = useMovimentacoesRecarga();
 
   // Busca por nome
@@ -17,28 +17,51 @@ const VerProdutos = () => {
 
   const produtosFiltrados = buscaNome
     ? produtos.filter(
-        (pro) =>
-          pro.nome && pro.nome.toLowerCase().includes(buscaNome.toLowerCase())
-      )
+      (pro) =>
+        pro.nome && pro.nome.toLowerCase().includes(buscaNome.toLowerCase())
+    )
     : produtos;
 
-  // ✅ AGORA REGISTRA A SAÍDA NO RELATÓRIO
-  const handleDelete = async (produto) => {
-    if (confirm(`Deseja realmente excluir o produto ${produto.nome}?`)) {
-      await deletarProduto(produto.id);
+  //  AGORA REGISTRA A SAÍDA NO RELATÓRIO
+  const handleRemover = async (produto) => {
+    const quantidade = Number(
+      prompt(
+        `Quantas unidades deseja remover de "${produto.nome}"?\n\nEstoque atual: ${produto.quantidade}`
+      )
+    );
 
-      // ✅ REGISTRO DE SAÍDA
+    if (!quantidade || quantidade <= 0) {
+      return alert("Quantidade inválida.");
+    }
+
+    if (quantidade > produto.quantidade) {
+      return alert("Quantidade maior que o estoque disponível.");
+    }
+
+    try {
+      const resultado = await removerQuantidade(produto, quantidade);
+
       adicionarMovimentacao({
         tipo: "Saída",
         produto: produto.nome,
-        quantidade: produto.quantidade,
+        quantidade: quantidade,
         data: new Date().toLocaleString(),
       });
 
-      alert(`Produto ${produto.nome} deletado com sucesso!`);
+      //  MENSAGEM DIFERENTE SE ZERAR O ESTOQUE
+      if (resultado.removido) {
+        alert(` Produto "${produto.nome}" removido do estoque!`);
+      } else {
+        alert(` ${quantidade} unidades removidas com sucesso!`);
+      }
+
+      window.location.reload(); // Atualiza a página
+
+    } catch (erro) {
+      alert("Erro ao remover produto.");
+      console.error(erro);
     }
   };
-
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -116,9 +139,9 @@ const VerProdutos = () => {
                         {/* ✅ AGORA PASSAMOS O PRODUTO INTEIRO */}
                         <button
                           className={styles.btnExcluir}
-                          onClick={() => handleDelete(pro)}
+                          onClick={() => handleRemover(pro)}
                         >
-                          Excluir
+                          Remover
                         </button>
                       </div>
                     </td>

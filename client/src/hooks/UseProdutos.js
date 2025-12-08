@@ -48,18 +48,43 @@ export function useListaProdutos() {
 }
 
 // D - Deletar
-export function useDeletaProduto() {
-  // Recebe o id do produto e requisita a api a exclusão
-  const deletarProduto = async (idProduto) => {
-    const req = await fetch(`${url}/produtos/${idProduto}`, {
-      method: "DELETE",
-    });
+export function useRemoverQuantidadeProduto() {
+  const removerQuantidade = async (produto, quantidadeRemover) => {
+    const novaQuantidade =
+      Number(produto.quantidade) - Number(quantidadeRemover);
+
+    // CASO ZERE O ESTOQUE → REMOVE O PRODUTO COMPLETAMENTE
+    if (novaQuantidade <= 0) {
+      const req = await fetch(
+        `${url}/produtos/${produto.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const res = await req.json();
+      return { removido: true, produto: res };
+    }
+
+    // CASO AINDA TENHA ESTOQUE → APENAS ATUALIZA
+    const dadosAtualizados = {
+      ...produto,
+      quantidade: novaQuantidade,
+    };
+
+    const req = await fetch(
+      `${url}/produtos/${produto.id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosAtualizados),
+      }
+    );
+
     const res = await req.json();
-    // Retorna o produto deletado
-    return res;
+    return { removido: false, produto: res };
   };
 
-  return { deletarProduto };
+  return { removerQuantidade };
 }
 
 // Cria o hook para bucar um produto por id

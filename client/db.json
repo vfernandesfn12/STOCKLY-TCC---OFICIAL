@@ -49,24 +49,7 @@
       "imagemUrl": "https://tse3.mm.bing.net/th/id/OIP.z2gsKlG9_QisRa7O6paelAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-
   "produtos": [
-    {
-      "id": "2002",
-      "nome": "Feijãoasd",
-      "codigo": "FEJ011",
-      "descricao": "Feijão preto tipo 1, pacote 1kg",
-      "quantidade": 200,
-      "fornecedor": "Campo Verde Alimentos",
-      "tipoProduto": "Comida",
-      "dataEntrada": "2025-11-17",
-      "dataValidade": "2027-04-10",
-<<<<<<< HEAD
-      "valor": "9.20"
-=======
-      "valor": "9.20",
-      "id": "2002"
-    },
     {
       "id": "2003",
       "nome": "Farinha de Trigo",
@@ -270,10 +253,8 @@
       "tipoProduto": "Outro",
       "dataValidade": "2025-12-11",
       "valor": "60"
->>>>>>> 5db55496d3e261226c2a14a846aa6f7f364bed5c
     }
   ],
-
   "funcionarios": [
     {
       "id": "a7cc",
@@ -282,19 +263,12 @@
       "telefone": "27995026326",
       "email": "joao@gmail.com",
       "departamento": "RH",
-<<<<<<< HEAD
       "cargo": "aas",
-=======
->>>>>>> 5db55496d3e261226c2a14a846aa6f7f364bed5c
       "fotoUrl": "https://s2-galileu.glbimg.com/uNEmxS89cbcamZwvIpRCkWquGwI=/0x0:1386x888/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_fde5cd494fb04473a83fa5fd57ad4542/internal_photos/bs/2023/m/e/F8xdjfQDGBUXCLqg7oMw/21.jpg"
     },
     {
       "id": "ccf9",
-<<<<<<< HEAD
       "nome_funcionario": "Judites",
-=======
-      "nome_funcionario": "Jubscreudi",
->>>>>>> 5db55496d3e261226c2a14a846aa6f7f364bed5c
       "cpf": "178.854.684-99",
       "telefone": "2799856326",
       "email": "jubscreudi@gmail.com",
@@ -313,15 +287,18 @@
       "fotoUrl": "https://tse3.mm.bing.net/th/id/OIP.z2gsKlG9_QisRa7O6paelAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
     }
   ],
-
   "categorias": [
-    { "id": "1", "nome": "Saúde e Beleza" }
+    {
+      "id": "1",
+      "nome": "Saúde e Beleza"
+    }
   ],
-
   "departamentos": [
-    { "id": "1", "nome": "RH" }
+    {
+      "id": "1",
+      "nome": "RH"
+    }
   ],
-
   "clientes": [
     {
       "id": "f006",
