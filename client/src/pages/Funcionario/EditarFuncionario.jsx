@@ -72,7 +72,7 @@ const EditarUsuario = () => {
       <h2 className="text-center my-4 color:#ffffffff">Editar Meu Perfil</h2>
 
       <Form onSubmit={handleSubmit}>
-        <FloatingLabel label="Nome" className="mb-3">
+        <FloatingLabel label="Nome" className="mb-4">
           <Form.Control
             type="text"
             name="nome"

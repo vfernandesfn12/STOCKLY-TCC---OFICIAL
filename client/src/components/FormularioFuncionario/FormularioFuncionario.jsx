@@ -203,7 +203,7 @@ const FormularioFuncionario = (props) => {
               )}
             </Row>
 
-            {/* DEPARTAMENTO */}
+            {/* DEPARTAMENTOSSSSSSSSS */}
             <Row className="mb-3">
               <Col md={6}>
                 <FloatingLabel label="Departamento" className="mb-3">
