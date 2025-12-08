@@ -8,33 +8,32 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
 import { useForm } from "react-hook-form";
-
 import {
   useListaDepartamentos,
   useInserirFuncionario,
-  useAtualizarFuncionario
+  useAtualizarFuncionario,
 } from "../../hooks/UseFuncionarios";
 
 const FormularioFuncionario = (props) => {
   const navigate = useNavigate();
-  // Hook de inserção de funcionário
+
+  // Hooks
   const { inserirFuncionario } = useInserirFuncionario();
   const { atualizarFuncionario } = useAtualizarFuncionario();
 
-  // Controle do formulário
+  // Formulário
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
     reset,
-  } = useForm({
-    defaultValues: props.funcionario || {},
-  });
+  } = useForm();
 
-  // Lista de departamentos
+  // Departamentos
   const departamentos = useListaDepartamentos();
 
+  // Preencher formulário ao EDITAR
   useEffect(() => {
     if (props.page === "editar" && props.funcionario) {
       reset({
@@ -49,28 +48,35 @@ const FormularioFuncionario = (props) => {
     }
   }, [props.funcionario, props.page, reset]);
 
-  // Variável de funcionário sem imagem
+  // Imagem padrão
   const linkImagem =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA13yHQQqIo0itjIvx5np_T1BJcqtKSwErqQ&s";
 
-  // Variável para armazenar o link da imagem, vindo do input
   const imagemAtual = watch("fotoUrl");
 
-  // Função ao enviar formulário com sucesso
+  // SUBMIT
   const onSubmit = async (data) => {
     if (props.page === "cadastro") {
-      await inserirFuncionario(data);
-      alert("Funcionário cadastrado com sucesso!");
+      // 1️⃣ Cria funcionário
+      await inserirFuncionario({
+        nome_funcionario: data.nome_funcionario,
+        cpf: data.cpf,
+        telefone: data.telefone,
+        email: data.email,
+        departamento: data.departamento,
+        cargo: data.cargo,
+        fotoUrl: data.fotoUrl,
+      });
+
+      alert("Funcionário cadastrado e usuário criado com sucesso!");
     } else {
       await atualizarFuncionario(data, props.funcionario.id);
       alert("Funcionário atualizado com sucesso!");
     }
 
-    // ✅ REDIRECIONA PARA A TELA DE LISTAGEM
     navigate("/funcionarios");
   };
 
-  // Função ao ocorrer erro na validação
   const onError = (errors) => {
     console.log("Erros:", errors);
   };
@@ -83,24 +89,19 @@ const FormularioFuncionario = (props) => {
         onSubmit={handleSubmit(onSubmit, onError)}
       >
         <h1 className="mb-5">
-          {props.page === "editar" ? "Editar Funcionário" : "Cadastro de Funcionário"}
+          {props.page === "editar"
+            ? "Editar Funcionário"
+            : "Cadastro de Funcionário"}
         </h1>
+
         <Row>
           <Col md={12} lg={6}>
-            {/* Nome do Funcionário */}
+            {/* NOME */}
             <FloatingLabel controlId="FI-NOME" label="Nome" className="mb-5">
               <Form.Control
                 type="text"
                 {...register("nome_funcionario", {
                   required: "O nome é obrigatório",
-                  minLength: {
-                    value: 2,
-                    message: "O nome deve ter pelo menos dois caracteres",
-                  },
-                  maxLength: {
-                    value: 50,
-                    message: "O nome deve ter no máximo 50 caracteres",
-                  },
                 })}
               />
               {errors.nome_funcionario && (
@@ -112,61 +113,38 @@ const FormularioFuncionario = (props) => {
             <FloatingLabel controlId="FI-CPF" label="CPF" className="mb-5">
               <Form.Control
                 type="text"
-                {...register("cpf", {
-                  required: "O CPF é obrigatório",
-                  pattern: {
-                    value: /^\d{3}\.\d{3}\.\d{3}-\d{2}$/,
-                    message: "Insira um CPF válido (ex: 000.000.000-00)",
-                  },
-                })}
+                {...register("cpf", { required: "O CPF é obrigatório" })}
               />
               {errors.cpf && <p className="error">{errors.cpf.message}</p>}
             </FloatingLabel>
 
-            {/* Telefone */}
-            <FloatingLabel
-              controlId="FI-TELEFONE"
-              label="Telefone"
-              className="mb-5"
-            >
+            {/* TELEFONE */}
+            <FloatingLabel controlId="FI-TELEFONE" label="Telefone" className="mb-5">
               <Form.Control
                 type="text"
-                {...register("telefone", {
-                  required: "O telefone é obrigatório",
-                  pattern: {
-                    value: /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/,
-                    message: "Insira um telefone válido",
-                  },
-                })}
+                {...register("telefone", { required: "O telefone é obrigatório" })}
               />
               {errors.telefone && (
                 <p className="error">{errors.telefone.message}</p>
               )}
             </FloatingLabel>
 
-            {/* Email */}
+            {/* EMAIL */}
             <FloatingLabel controlId="FI-EMAIL" label="Email" className="mb-5">
               <Form.Control
                 type="email"
-                {...register("email", {
-                  required: "O email é obrigatório",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Insira um email válido",
-                  },
-                })}
+                {...register("email", { required: "O email é obrigatório" })}
               />
               {errors.email && <p className="error">{errors.email.message}</p>}
             </FloatingLabel>
 
-            {/* Departamento */}
+            {/* DEPARTAMENTO */}
             <FloatingLabel
               controlId="FI-DEPARTAMENTO"
               label="Departamento"
               className="mb-5"
             >
               <Form.Select
-                defaultValue={props.funcionario?.departamento}
                 {...register("departamento", {
                   validate: (value) =>
                     value !== "0" || "Escolha um departamento",
@@ -185,65 +163,59 @@ const FormularioFuncionario = (props) => {
             </FloatingLabel>
           </Col>
 
-          {/* CARGO */}
+          {/* LADO DIREITO */}
           <Col md={12} lg={6}>
+            {/* CARGO */}
             <FloatingLabel controlId="FI-CARGO" label="Cargo" className="mb-5">
               <Form.Control
                 type="text"
-                defaultValue={props.funcionario?.cargo}
-                {...register("cargo", {
-                  required: "O cargo é obrigatório",
-                  minLength: {
-                    value: 2,
-                    message: "O cargo deve ter pelo menos dois caracteres",
-                  },
-                  maxLength: {
-                    value: 30,
-                    message: "O cargo deve ter no máximo 30 caracteres",
-                  },
-                })}
+                {...register("cargo", { required: "O cargo é obrigatório" })}
               />
               {errors.cargo && (
                 <p className="error">{errors.cargo.message}</p>
               )}
             </FloatingLabel>
 
-            {/* Foto do Funcionário */}
-            <Form.Group controlId="FI-FOTO" className="mb-5">
-              <FloatingLabel
-                controlId="FI-FOTO-LINK"
-                label="Link da foto"
-                className="mb-5"
-              >
+            {/* SENHA */}
+            {props.page === "cadastro" && (
+              <FloatingLabel controlId="FI-SENHA" label="Senha" className="mb-5">
                 <Form.Control
-                  type="url"
-                  {...register("fotoUrl", {
-                    pattern: {
-                      value: /^(http|https):\/\/[^ "]+$/,
-                      message: "Insira um link válido",
+                  type="password"
+                  {...register("senha", {
+                    required: "A senha é obrigatória",
+                    minLength: {
+                      value: 3,
+                      message: "A senha deve ter no mínimo 3 caracteres",
                     },
                   })}
                 />
-                {errors.fotoUrl && (
-                  <p className="error">{errors.fotoUrl.message}</p>
+                {errors.senha && (
+                  <p className="error">{errors.senha.message}</p>
                 )}
               </FloatingLabel>
+            )}
+
+            {/* FOTO */}
+            <Form.Group controlId="FI-FOTO" className="mb-5">
+              <FloatingLabel label="Link da foto" className="mb-3">
+                <Form.Control type="url" {...register("fotoUrl")} />
+              </FloatingLabel>
+
               <Image
                 width={200}
                 height={200}
                 rounded
-                src={imagemAtual === "" ? linkImagem : imagemAtual}
+                src={imagemAtual ? imagemAtual : linkImagem}
               />
             </Form.Group>
           </Col>
         </Row>
 
-        {/* Botão */}
+        {/* BOTÃO */}
         <Button variant="primary" size="lg" type="submit">
           {props.page === "editar" ? "Atualizar" : "Cadastrar"}
         </Button>
       </Form>
-
     </div>
   );
 };

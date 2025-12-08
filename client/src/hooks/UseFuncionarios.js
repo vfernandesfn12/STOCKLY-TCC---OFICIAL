@@ -114,6 +114,7 @@ export function useAtualizarFuncionario() {
       console.log("Erro ao atualizar funcionário:", erro.message);
     }
   };
+  
 
   return { atualizarFuncionario };
 }

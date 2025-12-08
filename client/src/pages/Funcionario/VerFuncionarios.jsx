@@ -1,5 +1,5 @@
 // VerFuncionarios.jsx
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Importando componentes do bootstrap
 import Table from "react-bootstrap/Table";
@@ -27,32 +27,29 @@ const Portal = ({ children }) => {
 };
 
 const VerFuncionarios = () => {
-  // Variavel para armazenar a lista de funcionários
+  // Lista de funcionários
   const funcionarios = useListaFuncionarios();
 
-  // importando a função de deletar funcionário
+  // Função de deletar funcionário
   const { deletarFuncionario } = useDeletaFuncionario();
 
-  // Função para requisitar a exclusão do funcionário
+  // Função para exclusão
   const handleDelete = async (idFuncionario, nome) => {
-    if (confirm(`Deseja realmente excluir o funcionário ${nome}?`)) {
-      const deletado = await deletarFuncionario(idFuncionario);
+    if (window.confirm(`Deseja realmente excluir o funcionário ${nome}?`)) {
+      await deletarFuncionario(idFuncionario);
       alert(`Funcionário ${nome} deletado com sucesso!`);
       window.location.reload();
     }
   };
 
-  // PARTE DE FILTROS
-  // Variáveis para os filtros
+  // FILTROS
   const [buscaNome, setBuscaNome] = useState("");
   const [dropdownAberto, setDropdownAberto] = useState(false);
 
-  // refs e estado de posição para o portal dropdown
   const botaoRef = useRef(null);
   const menuRef = useRef(null);
-  const [posicao, setPosicao] = useState({ top: 0, left: 0, width: 0 });
+  const [setPosicao] = useState({ top: 0, left: 0, width: 0 });
 
-  // calcula e ajusta posição do menu com base no botão
   const atualizaPosicao = () => {
     if (!botaoRef.current) return;
     const rect = botaoRef.current.getBoundingClientRect();
@@ -63,7 +60,6 @@ const VerFuncionarios = () => {
     });
   };
 
-  // atualiza posição quando abrir, e quando o tamanho da janela/scroll mudar
   useEffect(() => {
     if (dropdownAberto) {
       atualizaPosicao();
@@ -76,7 +72,6 @@ const VerFuncionarios = () => {
     }
   }, [dropdownAberto]);
 
-  // fecha ao clicar fora ou ao apertar Esc
   useEffect(() => {
     if (!dropdownAberto) return;
 
@@ -102,13 +97,10 @@ const VerFuncionarios = () => {
     };
   }, [dropdownAberto]);
 
-  // Lógica do filtro
-  const funcionariosFiltrados = funcionarios.filter((func) => {
-    const nomeCorresponde = func.nome_funcionario
-      .toLowerCase()
-      .includes(buscaNome.toLowerCase());
-    return nomeCorresponde;
-  });
+  // FILTRO FINAL
+  const funcionariosFiltrados = funcionarios.filter((func) =>
+    func.nome_funcionario.toLowerCase().includes(buscaNome.toLowerCase())
+  );
 
   return (
     <div className={styles.container}>
@@ -116,12 +108,14 @@ const VerFuncionarios = () => {
         {/* HEADER */}
         <div className={styles.header}>
           <h1 className={styles.titulo}>Funcionários Cadastrados</h1>
-          <p className={styles.subtitulo}>Gerencie todos os seus funcionários cadastrados.</p>
+          <p className={styles.subtitulo}>
+            Gerencie todos os seus funcionários cadastrados.
+          </p>
         </div>
 
-        {/* FILTROS */}
+        {/* FILTRO */}
         <div className={styles.filtroContainer}>
-          <p className={styles.filtroTitle}> Filtros</p>
+          <p className={styles.filtroTitle}>Filtros</p>
           <div className={styles.filtroContent}>
             <InputGroup className={styles.inputGroup}>
               <Form.Control
@@ -130,7 +124,10 @@ const VerFuncionarios = () => {
                 onChange={(e) => setBuscaNome(e.target.value)}
                 className={styles.filtroInput}
               />
-              <Button className={styles.btnPesquisar} id="botao-filtrar" style={{ marginLeft: "20px" }}>
+              <Button
+                className={styles.btnPesquisar}
+                style={{ marginLeft: "20px" }}
+              >
                 <BsSearch /> Pesquisar
               </Button>
             </InputGroup>
@@ -143,23 +140,21 @@ const VerFuncionarios = () => {
             <Table hover className={styles.table}>
               <thead>
                 <tr>
-                  <th><strong>ID</strong></th>
-                  <th><strong>Nome</strong></th>
-                  <th><strong>Email</strong></th>
-                  <th><strong>CPF</strong></th>
-                  <th><strong>Telefone</strong></th>
-                  <th><strong>Departamento</strong></th>
-                  <th><strong>Cargo</strong></th>
-                  <th><strong>Ações</strong></th>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>CPF</th>
+                  <th>Telefone</th>
+                  <th>Departamento</th>
+                  <th>Cargo</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
                 {funcionariosFiltrados.map((func) => (
                   <tr key={func.id}>
                     <td>{func.id}</td>
-                    <td>
-                      <span style={{ fontWeight: 500 }}>{func.nome_funcionario}</span>
-                    </td>
+                    <td style={{ fontWeight: 500 }}>{func.nome_funcionario}</td>
                     <td>{func.email}</td>
                     <td>{func.cpf}</td>
                     <td>{func.telefone}</td>
@@ -173,14 +168,17 @@ const VerFuncionarios = () => {
                           size="sm"
                           className={styles.btnEditar}
                         >
-                           Editar
+                          Editar
                         </Button>
+
                         <Button
                           size="sm"
                           className={styles.btnExcluir}
-                          onClick={() => handleDelete(func.id, func.nome_funcionario)}
+                          onClick={() =>
+                            handleDelete(func.id, func.nome_funcionario)
+                          }
                         >
-                           Excluir
+                          Excluir
                         </Button>
                       </div>
                     </td>
@@ -194,7 +192,9 @@ const VerFuncionarios = () => {
                 <BsBox />
               </div>
               <p>Nenhum funcionário encontrado</p>
-              <small>Tente ajustar seus filtros ou cadastre um novo funcionário</small>
+              <small>
+                Tente ajustar seus filtros ou cadastre um novo funcionário
+              </small>
             </div>
           )}
         </div>
