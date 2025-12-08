@@ -1,13 +1,13 @@
 import Grafico from "../../components/Grafico/Grafico.jsx";
 import styles from "./Relatorios.module.css";
 import { Row, Col, Container, Button } from "react-bootstrap";
-import { useMovimentacoes } from "../../hooks/useMovimentacoes.js";
-import { useMovimentacoesRecarga } from "../../hooks/useMovimentacoes.js";
+import { useMovimentacoes, useMovimentacoesRecarga } from "../../hooks/useMovimentacoes.js";
 import jsPDF from "jspdf";
+import { FaSyncAlt } from "react-icons/fa"; // ✅ ÍCONE DE ATUALIZAR
 
 const Relatorios = () => {
   const movimentacoes = useMovimentacoes() || [];
-  const { limparMovimentacoes } = useMovimentacoesRecarga();
+  const { limparMovimentacoes, fetchMovimentacoes } = useMovimentacoesRecarga();
 
   function exportarPDF() {
     const pdf = new jsPDF();
@@ -15,8 +15,9 @@ const Relatorios = () => {
 
     movimentacoes.forEach((mov, index) => {
       pdf.text(
-        `${index + 1} - ${mov.produto} | ${mov.tipo} | ${mov.quantidade} | ${mov.data
-        }`,
+        `${index + 1} - ${mov.produto} | ${mov.tipo} | ${mov.quantidade} | ${new Date(
+          mov.data
+        ).toLocaleString("pt-BR")}`,
         10,
         20 + index * 8
       );
@@ -38,6 +39,21 @@ const Relatorios = () => {
           <Grafico />
         </div>
 
+        {/* ✅ BOTÃO ATUALIZAR PEQUENO, AZUL E COM ÍCONE */}
+        <Row className="justify-content-end mb-2">
+          <Col md="auto">
+            <Button
+              size="sm"
+              style={{ backgroundColor: "#344250", border: "none" }}
+              onClick={fetchMovimentacoes}
+            >
+              <FaSyncAlt style={{ marginRight: "6px" }} />
+              Atualizar
+            </Button>
+          </Col>
+        </Row>
+
+        {/* ✅ BOTÕES PRINCIPAIS */}
         <Row className="d-flex justify-content-center gap-3 mb-4">
           <Button variant="danger" onClick={limparMovimentacoes}>
             Limpar Histórico
@@ -80,9 +96,7 @@ const Relatorios = () => {
                         {mov.tipo}
                       </td>
                       <td>{mov.quantidade}</td>
-                      <td>
-                        {new Date(mov.data).toLocaleString("pt-BR")}
-                      </td>
+                      <td>{new Date(mov.data).toLocaleString("pt-BR")}</td>
                     </tr>
                   ))
                 )}

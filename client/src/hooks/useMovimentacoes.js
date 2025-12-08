@@ -7,10 +7,13 @@ export function useMovimentacoes() {
 }
 
 export function useMovimentacoesRecarga() {
-  const { adicionarMovimentacao, limparMovimentacoes } = useContext(MovimentacoesContext);
+  const { adicionarMovimentacao, fetchMovimentacoes, limparMovimentacoes, restaurarBackup } =
+    useContext(MovimentacoesContext);
 
   return {
     adicionarMovimentacao,
+    fetchMovimentacoes,
     limparMovimentacoes,
+    restaurarBackup,
   };
 }

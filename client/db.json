@@ -241,18 +241,6 @@
       "valor": "7.30"
     },
     {
-      "id": "4899",
-      "nome": "Café Pelé",
-      "codigo": "ARZ775",
-      "descricao": "Mais torrado??\nSó se for carvão",
-      "quantidade": "5",
-      "fornecedor": "Grãos & Cia",
-      "dataEntrada": "2025-12-07",
-      "tipoProduto": "Outro",
-      "dataValidade": "2025-12-11",
-      "valor": "60"
-    },
-    {
       "id": "8487",
       "nome": "Chiclete",
       "codigo": "CHCL01",
@@ -263,6 +251,18 @@
       "tipoProduto": "Comida",
       "dataValidade": "2025-12-09",
       "valor": "30"
+    },
+    {
+      "id": "e5a5",
+      "nome": "Canja",
+      "codigo": "ARZ771",
+      "descricao": "sasas",
+      "quantidade": "1",
+      "fornecedor": "Grãos & Cia",
+      "dataEntrada": "2025-12-08",
+      "tipoProduto": "Comida",
+      "dataValidade": "2025-12-09",
+      "valor": "20"
     }
   ],
   "funcionarios": [
