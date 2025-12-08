@@ -29,11 +29,7 @@ const BarraNavegacao = () => {
   // Guarda o id do usuário atual
   const idAtual = localStorage.getItem("id");
 
-  // Guarda a imagem do usuário atual
-  const imagemAtual = localStorage.getItem("imagemPerfil");
 
-  // Imagem padrão
-  const semImagem = "https://cdn-icons-png.flaticon.com/512/17/17004.png";
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark min-vh-100 max-vh-100"
@@ -136,14 +132,7 @@ const BarraNavegacao = () => {
       <Nav className="dropdown pb-4">
         <NavDropdown
           title={
-            <span className="text-white align-items-center">
-              <Image
-                src={imagemAtual == "null" ? semImagem : imagemAtual}
-                width={50}
-                height={50}
-                roundedCircle
-                className="me-2 fs-5"
-              />
+            <span className="text-white align-items-center fs-4 ms-2">
               {usuarioNome}
             </span>
           }

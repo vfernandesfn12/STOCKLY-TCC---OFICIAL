@@ -38,13 +38,40 @@ const FormularioFuncionario = (props) => {
         email: props.funcionario.email,
         departamento: props.funcionario.departamento,
         cargo: props.funcionario.cargo,
+        // Senha NÃO entra aqui (segurança)
       });
     }
   }, [props.funcionario, props.page, reset]);
 
   const onSubmit = async (data) => {
     if (props.page === "cadastro") {
-      await inserirFuncionario(data);
+      // SALVA FUNCIONÁRIO
+      await inserirFuncionario({
+        nome_funcionario: data.nome_funcionario,
+        cpf: data.cpf,
+        telefone: data.telefone,
+        email: data.email,
+        departamento: data.departamento,
+        cargo: data.cargo,
+        senha: data.senha,
+        tipo: "funcionario",
+      });
+
+      //CRIA USUÁRIO PARA LOGIN
+      await fetch("http://localhost:5000/usuarios", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: data.nome_funcionario,
+          email: data.email,
+          senha: data.senha,
+          tipo: "funcionario",
+          imagemUrl: "https://via.placeholder.com/150",
+        }),
+      });
+
       alert("Funcionário cadastrado com sucesso!");
     } else {
       await atualizarFuncionario(data, props.funcionario.id);
@@ -65,6 +92,7 @@ const FormularioFuncionario = (props) => {
           </h2>
 
           <Form onSubmit={handleSubmit(onSubmit)}>
+            {/* NOME E CARGO */}
             <Row className="mb-3">
               <Col md={6}>
                 <FloatingLabel label="Nome" className="mb-3">
@@ -99,6 +127,7 @@ const FormularioFuncionario = (props) => {
               </Col>
             </Row>
 
+            {/* CPF E TELEFONE */}
             <Row className="mb-3">
               <Col md={6}>
                 <FloatingLabel label="CPF" className="mb-3">
@@ -133,6 +162,7 @@ const FormularioFuncionario = (props) => {
               </Col>
             </Row>
 
+            {/* EMAIL E SENHA */}
             <Row className="mb-3">
               <Col md={6}>
                 <FloatingLabel label="Email" className="mb-3">
@@ -150,6 +180,31 @@ const FormularioFuncionario = (props) => {
                 </FloatingLabel>
               </Col>
 
+              {props.page === "cadastro" && (
+                <Col md={6}>
+                  <FloatingLabel label="Senha" className="mb-3">
+                    <Form.Control
+                      type="password"
+                      {...register("senha", {
+                        required: "A senha é obrigatória",
+                        minLength: {
+                          value: 6,
+                          message: "A senha deve ter no mínimo 6 caracteres",
+                        },
+                      })}
+                    />
+                    {errors.senha && (
+                      <small className="text-danger">
+                        {errors.senha.message}
+                      </small>
+                    )}
+                  </FloatingLabel>
+                </Col>
+              )}
+            </Row>
+
+            {/* DEPARTAMENTO */}
+            <Row className="mb-3">
               <Col md={6}>
                 <FloatingLabel label="Departamento" className="mb-3">
                   <Form.Select
@@ -175,6 +230,7 @@ const FormularioFuncionario = (props) => {
               </Col>
             </Row>
 
+            {/* BOTÃO */}
             <div className="d-flex justify-content-center mt-4">
               <Button type="submit" size="lg">
                 {props.page === "editar" ? "Atualizar" : "Cadastrar"}
